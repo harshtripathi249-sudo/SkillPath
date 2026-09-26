@@ -20,6 +20,38 @@
     return snap.exists ? snap.data() : null;
   }
 
+  /**
+   * Initializes a brand-new user's document with genuinely fresh defaults
+   * (zero streak, no saved path) - but ONLY if the document doesn't already
+   * exist. Never overwrites an existing user's real progress on sign-in or
+   * page refresh. Returns the profile (freshly created, or the existing one
+   * untouched).
+   */
+  async function ensureUserProfile(uid, basicInfo = {}) {
+    const db = getDb();
+    if (!db || !uid) return null;
+
+    const ref = db.collection('users').doc(uid);
+    const snap = await ref.get();
+    if (snap.exists) {
+      return snap.data();
+    }
+
+    const freshProfile = {
+      email: basicInfo.email || null,
+      displayName: basicInfo.displayName || null,
+      photoURL: basicInfo.photoURL || null,
+      currentPath: null,
+      questionnaire: null,
+      streak: { count: 0, longest: 0, lastActiveDate: null },
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+
+    await ref.set(freshProfile);
+    return freshProfile;
+  }
+
   async function saveUserProfile(uid, data) {
     const db = getDb();
     if (!db || !uid) return;
@@ -68,6 +100,7 @@
 
   window.skillpathUserData = {
     getUserProfile,
+    ensureUserProfile,
     saveUserProfile,
     savePersonalizedPath,
     recordDailyActivity

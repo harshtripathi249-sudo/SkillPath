@@ -99,12 +99,10 @@
             <span class="material-symbols-outlined text-[16px]">local_fire_department</span>
             <span id="header-streak-count">0</span>
           </div>
-          <button id="header-profile-btn" class="relative flex items-center justify-center" aria-label="Account">
-            <img src="/assets/profile.png" alt="Learner Profile" class="profile-avatar"/>
+          <button id="header-profile-btn" class="relative flex items-center justify-center" aria-label="Open account menu" aria-haspopup="dialog" title="Account">
+            <img id="header-avatar-img" src="" alt="" class="profile-avatar hidden"/>
+            <div id="header-avatar-initials" class="profile-avatar avatar-initials hidden">?</div>
             <span class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-primary rounded-full ring-2 ring-surface"></span>
-          </button>
-          <button id="header-signout-btn" class="btn btn-secondary btn-sm" aria-label="Sign out" title="Sign out">
-            <span class="material-symbols-outlined text-[16px]">logout</span>
           </button>
         </div>
       </div>
@@ -670,6 +668,23 @@
          ==================================================================== -->
     <section id="view-mypath" class="hidden flex flex-col gap-6">
 
+      <!-- Empty State: shown when a signed-in user has not generated a path yet -->
+      <div id="mypath-empty-state" class="hidden card p-8 flex flex-col items-center text-center gap-3">
+        <div class="w-14 h-14 rounded-2xl bg-primary-container text-on-primary-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-[28px]">map</span>
+        </div>
+        <h2 class="headline-sm font-bold text-on-surface">You haven't created a learning path yet</h2>
+        <p class="body-sm text-on-surface-variant max-w-md">
+          Answer a few quick questions about your goal, schedule, and budget, and SkillPath will generate a roadmap tailored to you - saved to your account.
+        </p>
+        <button class="btn btn-primary mt-1" data-view-target="questionnaire">
+          <span class="material-symbols-outlined text-[18px]">tune</span>
+          <span>Find My Path</span>
+        </button>
+      </div>
+
+      <div id="mypath-content-wrapper" class="flex flex-col gap-6">
+
       <!-- Path Overview Header Card -->
       <div class="card p-6 relative overflow-hidden bg-surface-container-lowest">
         <div class="absolute -right-10 -top-10 w-40 h-40 bg-primary-fixed/30 rounded-full blur-2xl pointer-events-none"></div>
@@ -720,23 +735,23 @@
       <div class="grid grid-cols-1 sm:grid-cols-12 gap-3">
         <div class="sm:col-span-7 card p-4 flex flex-col justify-between">
           <span class="label-sm uppercase tracking-wider text-on-surface-variant font-bold">Active Path</span>
-          <div class="headline-sm font-bold text-on-surface mt-0.5">Stage 2 of 5</div>
+          <div id="path-stage-label" class="headline-sm font-bold text-on-surface mt-0.5">Stage 1 of 1</div>
           <div class="flex items-center gap-3 my-2">
             <div class="relative w-14 h-14 flex items-center justify-center flex-shrink-0">
               <svg class="w-full h-full transform -rotate-90" viewBox="0 0 48 48">
                 <circle class="text-surface-container-high" cx="24" cy="24" fill="none" r="20" stroke="currentColor" stroke-width="4.5"></circle>
-                <circle class="text-primary" cx="24" cy="24" fill="none" r="20" stroke="currentColor" stroke-dasharray="125.66" stroke-dashoffset="77.9" stroke-linecap="round" stroke-width="4.5"></circle>
+                <circle id="path-progress-ring" class="text-primary" cx="24" cy="24" fill="none" r="20" stroke="currentColor" stroke-dasharray="125.66" stroke-dashoffset="125.66" stroke-linecap="round" stroke-width="4.5"></circle>
               </svg>
-              <span class="absolute label-md font-bold text-primary">38%</span>
+              <span id="path-progress-percent" class="absolute label-md font-bold text-primary">0%</span>
             </div>
             <div class="flex flex-col">
               <span class="label-sm text-on-surface-variant">Overall Journey</span>
-              <span class="body-sm font-semibold text-on-surface">19 hrs of 50 hrs</span>
+              <span id="path-hours-progress" class="body-sm font-semibold text-on-surface">0 hrs of 0 hrs</span>
             </div>
           </div>
           <div class="flex items-center gap-1.5 text-on-surface-variant label-sm pt-1">
             <span class="material-symbols-outlined text-[15px] text-amber-500">flag</span>
-            <span>Next Goal: SQL Capstone</span>
+            <span id="path-next-goal">Next Goal: -</span>
           </div>
         </div>
 
@@ -746,18 +761,18 @@
               <span class="material-symbols-outlined text-[22px]">local_fire_department</span>
             </div>
             <div>
-              <div class="headline-sm font-bold text-on-surface">5 Days</div>
+              <div id="path-streak-days" class="headline-sm font-bold text-on-surface">Sign in to track</div>
               <div class="label-sm text-on-surface-variant">Study Streak</div>
             </div>
           </div>
 
           <div class="card p-3.5 flex items-center gap-3 flex-1">
             <div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary shrink-0">
-              <span class="material-symbols-outlined text-[22px]">speed</span>
+              <span class="material-symbols-outlined text-[22px]">task_alt</span>
             </div>
             <div>
-              <div class="label-lg font-bold text-on-surface">Ahead 14%</div>
-              <div class="label-sm text-secondary font-semibold">Pace vs Cohort</div>
+              <div id="path-tasks-completed" class="label-lg font-bold text-on-surface">0 of 0</div>
+              <div class="label-sm text-secondary font-semibold">Checkpoints Done</div>
             </div>
           </div>
         </div>
@@ -792,6 +807,9 @@
           <span>Continue Lesson</span>
         </button>
       </div>
+
+      </div>
+      <!-- /mypath-content-wrapper -->
 
     </section>
 
@@ -1173,6 +1191,59 @@
           <span id="auth-toggle-prompt">Don't have an account?</span>
           <button id="auth-toggle-mode-btn" type="button" class="font-bold text-primary hover:underline">Sign Up</button>
         </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile / Account Modal Dialog -->
+  <div id="profile-modal" class="coach-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="profile-modal-title">
+    <div class="coach-modal-card" style="max-width: 420px;">
+      <div class="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <img id="profile-modal-avatar-img" src="" alt="" class="profile-avatar hidden" style="width:2.75rem;height:2.75rem;"/>
+          <div id="profile-modal-avatar-initials" class="avatar-initials large hidden" style="width:2.75rem;height:2.75rem;border-radius:9999px;">?</div>
+          <div>
+            <h3 id="profile-modal-title" class="headline-sm text-on-surface font-bold">Account</h3>
+            <span id="profile-modal-email" class="label-sm text-secondary font-semibold">you@example.com</span>
+          </div>
+        </div>
+        <button id="profile-modal-close" class="showcase-nav-btn" aria-label="Close">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <div class="p-4 flex flex-col gap-3 overflow-y-auto">
+        <div id="profile-error" class="hidden label-sm font-semibold text-red-600 bg-red-50 dark:bg-red-950/40 rounded-lg px-3 py-2"></div>
+        <div id="profile-success" class="hidden label-sm font-semibold text-secondary bg-secondary-container/40 rounded-lg px-3 py-2"></div>
+
+        <div class="grid grid-cols-2 gap-2.5">
+          <div class="card p-3 flex flex-col items-center gap-0.5">
+            <span class="material-symbols-outlined text-[20px] text-amber-500">local_fire_department</span>
+            <span id="profile-streak-value" class="headline-sm font-bold text-on-surface">0</span>
+            <span class="label-xs text-on-surface-variant">Day Streak</span>
+          </div>
+          <div class="card p-3 flex flex-col items-center gap-0.5">
+            <span class="material-symbols-outlined text-[20px] text-primary">task_alt</span>
+            <span id="profile-tasks-value" class="headline-sm font-bold text-on-surface">0 of 0</span>
+            <span class="label-xs text-on-surface-variant">Checkpoints</span>
+          </div>
+        </div>
+
+        <form id="profile-form" class="flex flex-col gap-2.5" onsubmit="return false;">
+          <div>
+            <label class="label-xs font-bold text-on-surface-variant block mb-1">Display Name</label>
+            <input id="profile-name-input" type="text" class="input-text w-full" placeholder="Your name" autocomplete="name"/>
+          </div>
+          <button id="profile-save-btn" type="submit" class="btn btn-secondary w-full">
+            <span class="material-symbols-outlined text-[16px]">save</span>
+            <span>Save Changes</span>
+          </button>
+        </form>
+
+        <button id="profile-signout-btn" class="btn btn-primary w-full mt-1">
+          <span class="material-symbols-outlined text-[18px]">logout</span>
+          <span>Sign Out</span>
+        </button>
       </div>
     </div>
   </div>

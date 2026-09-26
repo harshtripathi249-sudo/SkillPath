@@ -41,6 +41,12 @@
     return credential.user;
   }
 
+  async function updateDisplayName(displayName) {
+    if (!authInstance || !authInstance.currentUser) throw new Error('Not signed in.');
+    await authInstance.currentUser.updateProfile({ displayName });
+    return authInstance.currentUser;
+  }
+
   async function signOutUser() {
     if (!authInstance) return;
     await authInstance.signOut();
@@ -64,6 +70,7 @@
     signUp,
     signIn,
     signInWithGoogle,
+    updateDisplayName,
     signOut: signOutUser,
     onAuthChange,
     getCurrentUser

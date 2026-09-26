@@ -67,6 +67,23 @@ function generatePath(constraints) {
   // Deep clone so base template is unaffected
   const customPath = JSON.parse(JSON.stringify(matchedBase));
 
+  // Always start from a clean slate. The seed templates carry pre-baked
+  // "completed" milestones, scores, and checked tasks for showcase/demo
+  // purposes only - a freshly generated path must never inherit that (or any
+  // progress a guest may have toggled on the shared seed template at runtime
+  // via the practice sandbox). Experience-level skip-ahead logic below opts
+  // specific milestones back into a "completed" state explicitly.
+  customPath.milestones.forEach((m, idx) => {
+    m.status = idx === 0 ? 'in-progress' : 'locked';
+    delete m.score;
+    delete m.progressPercent;
+    delete m.dueLabel;
+    delete m.solved;
+    if (Array.isArray(m.tasks)) {
+      m.tasks = m.tasks.map(t => ({ ...t, completed: false }));
+    }
+  });
+
   // Modify according to weekly hours
   let hoursPerWeekNum = 8;
   if (constraints.weeklyHours === '3-5') hoursPerWeekNum = 4;
@@ -78,20 +95,30 @@ function generatePath(constraints) {
   customPath.hoursPerWeek = hoursPerWeekNum;
   customPath.durationWeeks = Math.max(2, Math.ceil(totalCourseHours / hoursPerWeekNum));
 
-  // Modify according to experience level
+  // Modify according to experience level. Skipping ahead is an explicit,
+  // labeled decision based on the learner's stated experience - not a fake
+  // assessment score - and marks that milestone's own tasks done for
+  // consistency with the "completed" status.
+  const markMilestoneSkipped = (m) => {
+    m.status = 'completed';
+    m.score = 'Skipped via Baseline Experience';
+    if (Array.isArray(m.tasks)) {
+      m.tasks = m.tasks.map(t => ({ ...t, completed: true }));
+    }
+  };
+
   customPath.learnerLevel = constraints.experienceLevel || 'beginner';
   if (constraints.experienceLevel === 'intermediate') {
     if (customPath.milestones.length > 0) {
-      customPath.milestones[0].status = 'completed';
-      customPath.milestones[0].score = '100% (Skipped via Baseline)';
+      markMilestoneSkipped(customPath.milestones[0]);
       if (customPath.milestones.length > 1) {
         customPath.milestones[1].status = 'in-progress';
       }
     }
   } else if (constraints.experienceLevel === 'advanced') {
     if (customPath.milestones.length > 1) {
-      customPath.milestones[0].status = 'completed';
-      customPath.milestones[1].status = 'completed';
+      markMilestoneSkipped(customPath.milestones[0]);
+      markMilestoneSkipped(customPath.milestones[1]);
       if (customPath.milestones.length > 2) {
         customPath.milestones[2].status = 'in-progress';
       }

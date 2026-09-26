@@ -5,6 +5,17 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Default diagnostic questionnaire answers - also used to reset state.questionnaire
+  // back to a clean slate on sign-out, so the next account doesn't inherit answers.
+  const DEFAULT_QUESTIONNAIRE = {
+    goal: 'Data Analysis',
+    experienceLevel: 'beginner',
+    weeklyHours: '8-10',
+    budget: 'budget',
+    credentialNeed: 'industry-recognized',
+    learningStyle: 'hands-on'
+  };
+
   // Application State
   const state = {
     theme: 'light',
@@ -13,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     paths: [],
     internships: [],
     currentPath: null,
+    // True while state.currentPath is the shared guest/showcase sample path
+    // rather than a real personalized path generated/saved by a signed-in user.
+    currentPathIsDemo: true,
+    streakCount: null,
     courseStats: {},
     activeSubjectFilter: 'all',
     searchQuery: '',
@@ -40,14 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
 
     // Diagnostic Questionnaire State
-    questionnaire: {
-      goal: 'Data Analysis',
-      experienceLevel: 'beginner',
-      weeklyHours: '8-10',
-      budget: 'budget',
-      credentialNeed: 'industry-recognized',
-      learningStyle: 'hands-on'
-    }
+    questionnaire: { ...DEFAULT_QUESTIONNAIRE }
   };
 
   // DOM Elements
@@ -77,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupInternshipFilters();
     setupCatalogSearchAndFilters();
     setupAuthModal();
+    setupProfileModal();
 
     // Load initial data from backend API
     await loadInitialData();
@@ -144,7 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
       state.courses = courses;
       state.courseStats = stats;
       state.internships = internships;
-      state.currentPath = paths[0] || null;
+      state.currentPath = paths[0] ? sanitizePathForPreview(paths[0]) : null;
+      state.currentPathIsDemo = true;
 
       // Select 7 prominent international programs for the top hero showcase
       const featuredIds = [
@@ -208,8 +218,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetPathId) {
           const found = state.paths.find(p => p.id === targetPathId || p.slug === targetPathId);
           if (found) {
-            state.currentPath = found;
-            renderPersonalizedPath(found);
+            // This is a curated/example path being previewed from the catalog,
+            // not the signed-in user's own saved progress - show it as a clean,
+            // not-started template so nobody sees fake completed milestones or
+            // pre-checked tasks that aren't really theirs.
+            state.currentPath = sanitizePathForPreview(found);
+            state.currentPathIsDemo = true;
+            hideMyPathEmptyState();
+            renderPersonalizedPath(state.currentPath);
           }
         }
         switchView(targetView);
@@ -663,7 +679,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('auth-modal');
     const closeBtn = document.getElementById('auth-modal-close');
     const signInBtn = document.getElementById('header-signin-btn');
-    const signOutBtn = document.getElementById('header-signout-btn');
     const form = document.getElementById('auth-form');
     const submitBtn = document.getElementById('auth-submit-btn');
     const submitText = document.getElementById('auth-submit-text');
@@ -719,17 +734,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    if (signOutBtn) {
-      signOutBtn.addEventListener('click', async () => {
-        try {
-          await window.skillpathAuth.signOut();
-          showToast('Signed out.');
-        } catch (err) {
-          showToast(`Error signing out: ${err.message}`, 4000);
-        }
-      });
-    }
-
     if (form) {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -781,10 +785,169 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  /** Derives 1-2 uppercase initials from a display name or email, for the avatar fallback. */
+  function getInitials(nameOrEmail) {
+    const trimmed = (nameOrEmail || '').trim();
+    if (!trimmed) return '?';
+    if (trimmed.includes('@')) return trimmed[0].toUpperCase();
+    const parts = trimmed.split(/\s+/).filter(Boolean);
+    if (parts.length === 1) return parts[0][0].toUpperCase();
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  }
+
+  /**
+   * Shows a real photo (e.g. Google account photo) when available, falling
+   * back to an initials avatar for email/password accounts, missing photos,
+   * or if the photo URL fails to load.
+   */
+  function applyAvatar(imgEl, initialsEl, user) {
+    if (!imgEl || !initialsEl) return;
+    const label = user?.displayName || user?.email || '';
+    initialsEl.textContent = getInitials(label);
+
+    if (user?.photoURL) {
+      imgEl.onerror = () => {
+        imgEl.classList.add('hidden');
+        initialsEl.classList.remove('hidden');
+      };
+      imgEl.src = user.photoURL;
+      imgEl.alt = label ? `${label}'s avatar` : 'Account avatar';
+      imgEl.classList.remove('hidden');
+      initialsEl.classList.add('hidden');
+    } else {
+      imgEl.classList.add('hidden');
+      initialsEl.classList.remove('hidden');
+    }
+  }
+
+  /** Clears any signed-in user's avatar back to a neutral placeholder state. */
+  function resetAvatar(imgEl, initialsEl) {
+    if (imgEl) {
+      imgEl.classList.add('hidden');
+      imgEl.removeAttribute('src');
+      imgEl.onerror = null;
+    }
+    if (initialsEl) {
+      initialsEl.classList.add('hidden');
+      initialsEl.textContent = '?';
+    }
+  }
+
+  /**
+   * Profile modal: shows the signed-in user's real avatar/name/email, lets
+   * them edit their display name, shows their genuine streak/checkpoint
+   * stats, and provides sign-out. Hidden entirely for guests (the button
+   * that opens it only exists inside the signed-in header block).
+   */
+  function setupProfileModal() {
+    const modal = document.getElementById('profile-modal');
+    const closeBtn = document.getElementById('profile-modal-close');
+    const openTriggerBtn = document.getElementById('header-profile-btn');
+    const signOutBtn = document.getElementById('profile-signout-btn');
+    const form = document.getElementById('profile-form');
+    const nameInput = document.getElementById('profile-name-input');
+    const emailEl = document.getElementById('profile-modal-email');
+    const titleEl = document.getElementById('profile-modal-title');
+    const errorBox = document.getElementById('profile-error');
+    const successBox = document.getElementById('profile-success');
+    const tasksEl = document.getElementById('profile-tasks-value');
+    const streakEl = document.getElementById('profile-streak-value');
+
+    const hideMessages = () => {
+      if (errorBox) errorBox.classList.add('hidden');
+      if (successBox) successBox.classList.add('hidden');
+    };
+    const showError = (message) => {
+      if (!errorBox) return;
+      errorBox.textContent = message;
+      errorBox.classList.remove('hidden');
+    };
+    const showSuccess = (message) => {
+      if (!successBox) return;
+      successBox.textContent = message;
+      successBox.classList.remove('hidden');
+    };
+
+    const openModal = () => {
+      hideMessages();
+      const user = window.skillpathAuth && window.skillpathAuth.getCurrentUser();
+      if (!user) return;
+
+      if (emailEl) emailEl.textContent = user.email || '';
+      if (titleEl) titleEl.textContent = user.displayName || 'Account';
+      if (nameInput) nameInput.value = user.displayName || '';
+      applyAvatar(
+        document.getElementById('profile-modal-avatar-img'),
+        document.getElementById('profile-modal-avatar-initials'),
+        user
+      );
+
+      const stats = computePathProgress(state.currentPathIsDemo ? null : state.currentPath);
+      if (tasksEl) tasksEl.textContent = `${stats.completedTasks} of ${stats.totalTasks}`;
+      if (streakEl) streakEl.textContent = typeof state.streakCount === 'number' ? String(state.streakCount) : '0';
+
+      if (modal) modal.classList.add('open');
+    };
+
+    const closeModal = () => {
+      if (modal) modal.classList.remove('open');
+    };
+
+    if (openTriggerBtn) openTriggerBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (modal) {
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+      modal.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+    }
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        hideMessages();
+        const user = window.skillpathAuth && window.skillpathAuth.getCurrentUser();
+        if (!user) return;
+
+        const newName = (nameInput?.value || '').trim();
+        try {
+          await window.skillpathAuth.updateDisplayName(newName);
+          if (window.skillpathUserData) {
+            await window.skillpathUserData.saveUserProfile(user.uid, { displayName: newName });
+          }
+          if (titleEl) titleEl.textContent = newName || 'Account';
+          const headerProfileBtn = document.getElementById('header-profile-btn');
+          if (headerProfileBtn) headerProfileBtn.title = newName || user.email || 'Account';
+          applyAvatar(
+            document.getElementById('header-avatar-img'),
+            document.getElementById('header-avatar-initials'),
+            { ...user, displayName: newName }
+          );
+          showSuccess('Saved.');
+        } catch (err) {
+          showError(err.message || 'Could not save changes.');
+        }
+      });
+    }
+
+    if (signOutBtn) {
+      signOutBtn.addEventListener('click', async () => {
+        try {
+          await window.skillpathAuth.signOut();
+          closeModal();
+          showToast('Signed out.');
+        } catch (err) {
+          showError(err.message || 'Error signing out.');
+        }
+      });
+    }
+  }
+
   /**
    * Subscribes to Firebase auth state. Toggles the header between the guest
-   * "Sign In" button and the signed-in avatar/streak block, and restores any
-   * previously saved personalized path + records today's streak activity.
+   * "Sign In" button and the signed-in avatar/streak block, restores any
+   * previously saved personalized path (or shows a genuine empty state for a
+   * brand-new account), records today's streak activity, and fully resets
+   * back to guest defaults on sign-out so no account's UI/state leaks into
+   * the next session.
    */
   function initAuthObserver() {
     if (!window.skillpathAuth) return;
@@ -793,40 +956,69 @@ document.addEventListener('DOMContentLoaded', () => {
       const signInBtn = document.getElementById('header-signin-btn');
       const userBlock = document.getElementById('header-user-block');
       const streakBadge = document.getElementById('header-streak-badge');
-      const streakCount = document.getElementById('header-streak-count');
+      const streakCountEl = document.getElementById('header-streak-count');
       const profileBtn = document.getElementById('header-profile-btn');
+      const headerAvatarImg = document.getElementById('header-avatar-img');
+      const headerAvatarInitials = document.getElementById('header-avatar-initials');
 
       if (!user) {
+        // Signed out (or app just loaded with nobody signed in): clear any
+        // previous account's UI/state before showing the guest experience.
         if (signInBtn) signInBtn.classList.remove('hidden');
         if (userBlock) userBlock.classList.remove('is-visible');
         if (streakBadge) streakBadge.classList.remove('is-visible');
+        resetAvatar(headerAvatarImg, headerAvatarInitials);
+
+        state.streakCount = null;
+        state.questionnaire = { ...DEFAULT_QUESTIONNAIRE };
+        state.currentPath = state.paths[0] ? sanitizePathForPreview(state.paths[0]) : null;
+        state.currentPathIsDemo = true;
+        hideMyPathEmptyState();
+        if (state.currentPath) renderPersonalizedPath(state.currentPath);
         return;
       }
 
       if (signInBtn) signInBtn.classList.add('hidden');
       if (userBlock) userBlock.classList.add('is-visible');
       if (profileBtn) profileBtn.title = user.displayName || user.email || 'Account';
+      applyAvatar(headerAvatarImg, headerAvatarInitials, user);
 
       if (!window.skillpathUserData) return;
 
       try {
-        const profile = await window.skillpathUserData.getUserProfile(user.uid);
+        // Creates a genuinely fresh doc (zero streak, no saved path) ONLY if
+        // this uid has never signed in before - never overwrites an existing
+        // user's real progress on sign-in or page refresh.
+        const profile = await window.skillpathUserData.ensureUserProfile(user.uid, {
+          email: user.email,
+          displayName: user.displayName,
+          photoURL: user.photoURL
+        });
 
-        if (profile) {
-          if (profile.questionnaire) {
-            state.questionnaire = { ...state.questionnaire, ...profile.questionnaire };
-          }
-          if (profile.currentPath) {
-            state.currentPath = profile.currentPath;
-            renderPersonalizedPath(profile.currentPath);
-          }
+        state.questionnaire = profile?.questionnaire
+          ? { ...DEFAULT_QUESTIONNAIRE, ...profile.questionnaire }
+          : { ...DEFAULT_QUESTIONNAIRE };
+
+        if (profile?.currentPath) {
+          state.currentPath = profile.currentPath;
+          state.currentPathIsDemo = false;
+          hideMyPathEmptyState();
+          renderPersonalizedPath(profile.currentPath);
+        } else {
+          // Brand-new account, or an existing account that hasn't generated a
+          // path yet - show a genuine empty state, never the shared demo path.
+          state.currentPath = null;
+          state.currentPathIsDemo = false;
+          showMyPathEmptyState();
         }
 
         const streak = await window.skillpathUserData.recordDailyActivity(user.uid);
-        if (streak && streakBadge && streakCount) {
-          streakCount.textContent = String(streak.count);
+        state.streakCount = streak ? streak.count : 0;
+        if (streakBadge && streakCountEl) {
+          streakCountEl.textContent = String(state.streakCount);
           streakBadge.classList.add('is-visible');
         }
+        if (state.currentPath) renderPathProgressBento(state.currentPath, state.streakCount);
       } catch (err) {
         console.warn('[SkillPath Auth] Failed to load user data:', err.message);
       }
@@ -1356,12 +1548,150 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }).join('');
     }
+
+    renderPathProgressBento(pathItem, state.streakCount);
+  }
+
+  /**
+   * Deep-clones a curated/example path and resets its milestones/tasks to a
+   * clean "not started" state. The seed catalog's example paths carry
+   * pre-baked "completed" milestones and checked tasks purely for showcase
+   * purposes - nobody's actual progress. Cloning (rather than mutating the
+   * shared state.paths entry directly) also prevents permanently corrupting
+   * the shared catalog data for every other guest/user in this session.
+   */
+  function sanitizePathForPreview(pathItem) {
+    if (!pathItem) return pathItem;
+    const clone = JSON.parse(JSON.stringify(pathItem));
+    if (Array.isArray(clone.milestones)) {
+      clone.milestones.forEach((m, idx) => {
+        m.status = idx === 0 ? 'in-progress' : 'locked';
+        delete m.score;
+        delete m.progressPercent;
+        delete m.dueLabel;
+        delete m.solved;
+        if (Array.isArray(m.tasks)) {
+          m.tasks = m.tasks.map(t => ({ ...t, completed: false }));
+        }
+      });
+    }
+    return clone;
+  }
+
+  /**
+   * Computes genuine progress stats from a path's own milestone/task data -
+   * never a fabricated number. A milestone counts as done when every one of
+   * its tasks is checked (or, for milestones with no checklist, when its
+   * status is already 'completed', e.g. an explicit experience-level skip).
+   */
+  function computePathProgress(pathItem) {
+    const milestones = Array.isArray(pathItem?.milestones) ? pathItem.milestones : [];
+    let completedTasks = 0, totalTasks = 0, completedHours = 0, totalHours = 0;
+    let currentStage = milestones.length, nextGoalTitle = null, foundActive = false;
+
+    milestones.forEach(m => {
+      const hours = Number(m.durationHours) || 0;
+      totalHours += hours;
+
+      const tasks = Array.isArray(m.tasks) ? m.tasks : [];
+      totalTasks += tasks.length;
+      const doneCount = tasks.filter(t => t.completed).length;
+      completedTasks += doneCount;
+
+      const milestoneDone = tasks.length > 0 ? doneCount === tasks.length : m.status === 'completed';
+      if (milestoneDone) {
+        completedHours += hours;
+      } else if (!foundActive) {
+        currentStage = m.stage;
+        nextGoalTitle = m.title;
+        foundActive = true;
+      }
+    });
+
+    const percent = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+    return {
+      completedTasks,
+      totalTasks,
+      percent,
+      completedHours,
+      totalHours,
+      currentStage,
+      totalStages: milestones.length,
+      nextGoalTitle: nextGoalTitle || (milestones.length ? 'All milestones complete!' : '-')
+    };
+  }
+
+  /** Renders the "Active Path / Overall Journey / Streak / Checkpoints" bento from real data. */
+  function renderPathProgressBento(pathItem, streakCount) {
+    const stageLabel = document.getElementById('path-stage-label');
+    const ring = document.getElementById('path-progress-ring');
+    const percentLabel = document.getElementById('path-progress-percent');
+    const hoursLabel = document.getElementById('path-hours-progress');
+    const nextGoalLabel = document.getElementById('path-next-goal');
+    const streakLabel = document.getElementById('path-streak-days');
+    const tasksLabel = document.getElementById('path-tasks-completed');
+
+    const stats = computePathProgress(pathItem);
+    const RING_CIRCUMFERENCE = 125.66;
+
+    if (stageLabel) {
+      stageLabel.textContent = stats.totalStages
+        ? `Stage ${Math.min(stats.currentStage, stats.totalStages)} of ${stats.totalStages}`
+        : '—';
+    }
+    if (ring) {
+      ring.setAttribute('stroke-dashoffset', String(RING_CIRCUMFERENCE * (1 - stats.percent / 100)));
+    }
+    if (percentLabel) percentLabel.textContent = `${stats.percent}%`;
+    if (hoursLabel) hoursLabel.textContent = `${stats.completedHours} hrs of ${stats.totalHours} hrs`;
+    if (nextGoalLabel) nextGoalLabel.textContent = `Next Goal: ${escapeHtml(stats.nextGoalTitle)}`;
+    if (tasksLabel) tasksLabel.textContent = `${stats.completedTasks} of ${stats.totalTasks}`;
+    if (streakLabel) {
+      streakLabel.textContent = typeof streakCount === 'number'
+        ? `${streakCount} Day${streakCount === 1 ? '' : 's'}`
+        : 'Sign in to track';
+    }
+  }
+
+  /** Shows the "no path yet" empty state instead of any stale/demo path content. */
+  function showMyPathEmptyState() {
+    const emptyState = document.getElementById('mypath-empty-state');
+    const contentWrapper = document.getElementById('mypath-content-wrapper');
+    if (emptyState) emptyState.classList.remove('hidden');
+    if (contentWrapper) contentWrapper.classList.add('hidden');
+  }
+
+  /** Hides the empty state and shows the real path content again. */
+  function hideMyPathEmptyState() {
+    const emptyState = document.getElementById('mypath-empty-state');
+    const contentWrapper = document.getElementById('mypath-content-wrapper');
+    if (emptyState) emptyState.classList.add('hidden');
+    if (contentWrapper) contentWrapper.classList.remove('hidden');
   }
 
   // Global helper for toggling checklist tasks
   window.toggleTask = async function(pathId, stageNum, taskId, isChecked) {
     try {
-      await window.skillpathApi.updateTask(pathId, stageNum, taskId, isChecked);
+      const currentUser = window.skillpathAuth && window.skillpathAuth.getCurrentUser();
+      const isOwnSavedPath = !!currentUser && !state.currentPathIsDemo &&
+        state.currentPath && state.currentPath.id === pathId;
+
+      // Reflect the change locally first so the progress bento is accurate
+      // immediately, regardless of which backend persists it.
+      const milestone = state.currentPath?.milestones?.find(m => m.stage === Number(stageNum));
+      const task = milestone?.tasks?.find(t => t.id === taskId);
+      if (task) task.completed = isChecked;
+
+      if (isOwnSavedPath && window.skillpathUserData) {
+        // Signed-in user's own generated path: persist to their Firestore
+        // document only - never the shared backend/demo state.
+        await window.skillpathUserData.saveUserProfile(currentUser.uid, { currentPath: state.currentPath });
+      } else {
+        // Guest exploring the shared showcase/demo path.
+        await window.skillpathApi.updateTask(pathId, stageNum, taskId, isChecked);
+      }
+
+      if (state.currentPath) renderPathProgressBento(state.currentPath, state.streakCount);
       showToast('Progress updated successfully!', 2000);
     } catch (err) {
       console.error('Error updating task:', err);
@@ -1696,6 +2026,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
           const generated = await window.skillpathApi.generatePath(state.questionnaire);
           state.currentPath = generated;
+          state.currentPathIsDemo = false;
+          hideMyPathEmptyState();
           renderPersonalizedPath(generated);
 
           const currentUser = window.skillpathAuth && window.skillpathAuth.getCurrentUser();
