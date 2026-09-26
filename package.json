@@ -1,0 +1,29 @@
+{
+  "name": "skillpath",
+  "version": "1.0.0",
+  "description": "SkillPath – Guided Learning & Certification Planner",
+  "main": "backend/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node --watch backend/server.js",
+    "start:backend": "node backend/server.js",
+    "start:frontend": "npx serve frontend -p 3000",
+    "test": "node test/api.test.js && node test/coach-ui.test.js && node test/paths-layout.test.js",
+    "check": "node test/api.test.js && node test/coach-ui.test.js && node test/paths-layout.test.js"
+  },
+  "keywords": [
+    "education",
+    "learning-path",
+    "skills",
+    "courses",
+    "certifications"
+  ],
+  "author": "SkillPath Team",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}

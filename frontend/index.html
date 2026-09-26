@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+  <title>SkillPath – Guided Learning & Certification Planner</title>
+  <meta name="description" content="SkillPath transforms your career goal into a personalized, budget-optimized learning path with verified courses, credentials, and interactive practice."/>
+
+  <!-- Fonts & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+
+  <!-- Tailwind CDN for rapid utility classes -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            surface: 'var(--color-surface)',
+            'surface-container-lowest': 'var(--color-surface-container-lowest)',
+            'surface-container-low': 'var(--color-surface-container-low)',
+            'surface-container': 'var(--color-surface-container)',
+            'surface-container-high': 'var(--color-surface-container-high)',
+            'surface-container-highest': 'var(--color-surface-container-highest)',
+            'on-surface': 'var(--color-on-surface)',
+            'on-surface-variant': 'var(--color-on-surface-variant)',
+            'inverse-surface': 'var(--color-inverse-surface)',
+            'inverse-on-surface': 'var(--color-inverse-on-surface)',
+            outline: 'var(--color-outline)',
+            'outline-variant': 'var(--color-outline-variant)',
+            primary: 'var(--color-primary)',
+            'primary-dark': 'var(--color-primary-dark)',
+            'primary-container': 'var(--color-primary-container)',
+            'on-primary': 'var(--color-on-primary)',
+            'on-primary-container': 'var(--color-on-primary-container)',
+            'primary-fixed': 'var(--color-primary-fixed)',
+            'on-primary-fixed': 'var(--color-on-primary-fixed)',
+            secondary: 'var(--color-secondary)',
+            'secondary-vibrant': 'var(--color-secondary-vibrant)',
+            'on-secondary': 'var(--color-on-secondary)',
+            'secondary-container': 'var(--color-secondary-container)',
+            'on-secondary-container': 'var(--color-on-secondary-container)',
+            'secondary-fixed': 'var(--color-secondary-fixed)',
+            tertiary: 'var(--color-tertiary)',
+            'tertiary-vibrant': 'var(--color-tertiary-vibrant)',
+            'on-tertiary': 'var(--color-on-tertiary)',
+            'tertiary-container': 'var(--color-tertiary-container)',
+            'tertiary-fixed': 'var(--color-tertiary-fixed)',
+            'on-tertiary-fixed': 'var(--color-on-tertiary-fixed)'
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Kinetic Horizon Custom Design System (Light & Dark mode tokens) -->
+  <link rel="stylesheet" href="/css/design-system.css"/>
+</head>
+<body class="bg-surface text-on-surface">
+
+  <!-- Global Header -->
+  <header class="app-header">
+    <div class="app-container header-inner">
+      <a href="#" class="logo-group" data-view-target="explore" aria-label="SkillPath Home">
+        <img src="/assets/logo.svg" alt="SkillPath Logo" class="logo-svg"/>
+      </a>
+      <div class="flex items-center gap-2.5">
+        <!-- Light / Dark Mode Toggle Button -->
+        <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle light/dark theme" title="Toggle Light / Dark mode">
+          <span class="material-symbols-outlined text-[18px]" id="theme-toggle-icon">dark_mode</span>
+        </button>
+
+        <button class="hidden sm:inline-flex btn btn-secondary btn-sm" data-view-target="questionnaire">
+          <span class="material-symbols-outlined text-[16px]">tune</span>
+          <span>Find My Path</span>
+        </button>
+
+        <button class="hidden sm:inline-flex btn btn-primary btn-sm" id="header-coach-btn">
+          <span class="material-symbols-outlined text-[16px]">smart_toy</span>
+          <span>Coach</span>
+        </button>
+
+        <!-- Guest state: Sign In entry point -->
+        <button id="header-signin-btn" class="btn btn-secondary btn-sm">
+          <span class="material-symbols-outlined text-[16px]">login</span>
+          <span>Sign In</span>
+        </button>
+
+        <!-- Signed-in state: daily streak badge + avatar + sign out -->
+        <div id="header-user-block" class="header-user-block">
+          <div id="header-streak-badge" class="header-streak-badge" title="Daily learning streak">
+            <span class="material-symbols-outlined text-[16px]">local_fire_department</span>
+            <span id="header-streak-count">0</span>
+          </div>
+          <button id="header-profile-btn" class="relative flex items-center justify-center" aria-label="Account">
+            <img src="/assets/profile.png" alt="Learner Profile" class="profile-avatar"/>
+            <span class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-primary rounded-full ring-2 ring-surface"></span>
+          </button>
+          <button id="header-signout-btn" class="btn btn-secondary btn-sm" aria-label="Sign out" title="Sign out">
+            <span class="material-symbols-outlined text-[16px]">logout</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Global Loading Spinner Overlay -->
+  <div id="global-loader" class="hidden fixed inset-0 bg-surface/75 backdrop-blur-sm z-50 flex items-center justify-center">
+    <div class="card p-6 flex flex-col items-center gap-3">
+      <div class="spinner"></div>
+      <p class="label-md font-semibold text-primary">Loading SkillPath...</p>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="page-wrapper app-container">
+
+    <!-- ====================================================================
+         VIEW 1: EXPLORE & GOAL DISCOVERY (Landing Page)
+         ==================================================================== -->
+    <section id="view-explore" class="flex flex-col gap-6">
+
+      <!-- Hero Search & Filter Area -->
+      <div class="flex flex-col gap-3 pt-2">
+        <div class="relative flex items-center w-full">
+          <span class="material-symbols-outlined absolute left-3.5 text-outline text-[22px] pointer-events-none">search</span>
+          <input id="hero-search-input" class="input-text pl-11 pr-12 shadow-sm" 
+                 placeholder="What skill, goal, or certification do you want to conquer?" 
+                 type="text" aria-label="Search learning goals and skills"/>
+          <button class="absolute right-2.5 w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors"
+                  data-view-target="catalog" title="Open full course filters">
+            <span class="material-symbols-outlined text-[18px]">tune</span>
+          </button>
+        </div>
+
+        <!-- Quick Subject Filter Chips -->
+        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+          <button class="filter-chip active shrink-0 px-3.5 py-1.5 rounded-full label-md font-semibold bg-primary text-on-primary shadow-sm flex items-center gap-1" data-subject="all">
+            <span class="material-symbols-outlined text-[15px]">auto_awesome</span>
+            <span>All Goals</span>
+          </button>
+          <button class="filter-chip shrink-0 px-3.5 py-1.5 rounded-full label-md font-semibold bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high transition-colors shadow-sm" data-subject="Python">
+            Python
+          </button>
+          <button class="filter-chip shrink-0 px-3.5 py-1.5 rounded-full label-md font-semibold bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high transition-colors shadow-sm" data-subject="Data Analysis">
+            Data Analytics
+          </button>
+          <button class="filter-chip shrink-0 px-3.5 py-1.5 rounded-full label-md font-semibold bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high transition-colors shadow-sm" data-subject="UI/UX">
+            UI/UX Design
+          </button>
+          <button class="filter-chip shrink-0 px-3.5 py-1.5 rounded-full label-md font-semibold bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high transition-colors shadow-sm" data-subject="Web Development">
+            Web Dev
+          </button>
+          <button class="filter-chip shrink-0 px-3.5 py-1.5 rounded-full label-md font-semibold bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high transition-colors shadow-sm" data-subject="Digital Marketing">
+            Digital Marketing
+          </button>
+          <button class="filter-chip shrink-0 px-3.5 py-1.5 rounded-full label-md font-semibold bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high transition-colors shadow-sm" data-subject="Conversational Spanish">
+            Languages
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Learner Ticker -->
+      <div class="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-surface-container-low shadow-sm overflow-hidden" role="status" aria-live="polite">
+        <div class="relative flex items-center justify-center shrink-0">
+          <span class="w-2.5 h-2.5 rounded-full bg-secondary-vibrant animate-ping absolute"></span>
+          <span class="w-2 h-2 rounded-full bg-secondary-vibrant relative"></span>
+        </div>
+        <div class="min-w-0 flex-1">
+          <p id="learner-ticker" class="label-sm text-on-surface truncate transition-opacity duration-300">
+            <span class="font-bold text-primary">Marcus K.</span> just unlocked Google Data Analytics Capstone!
+          </p>
+        </div>
+        <span class="material-symbols-outlined text-secondary-vibrant text-[20px] shrink-0">military_tech</span>
+      </div>
+
+      <!-- ==================================================================
+           PROMINENT FEATURED COURSE SHOWCASE
+           Layout Reference: Wide hero banner with dual column & artwork
+           ================================================================== -->
+      <section class="flex flex-col gap-2">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[20px]">stars</span>
+            <h2 class="headline-sm text-on-surface font-bold">Featured Program Showcase</h2>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span id="showcase-counter" class="label-sm text-on-surface-variant font-mono mr-1">1 / 7</span>
+            <button id="showcase-prev" class="showcase-nav-btn" aria-label="Previous course" title="Previous course">
+              <span class="material-symbols-outlined text-[16px]">chevron_left</span>
+            </button>
+            <button id="showcase-pause" class="showcase-nav-btn" aria-label="Pause auto-scroll" title="Play / Pause auto-scroll">
+              <span class="material-symbols-outlined text-[16px]" id="showcase-pause-icon">pause</span>
+            </button>
+            <button id="showcase-next" class="showcase-nav-btn" aria-label="Next course" title="Next course">
+              <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="hero-showcase-container" class="hero-showcase-wrapper" tabindex="0" role="region" aria-label="Featured course showcase carousel">
+          <!-- Dynamic hero course showcase banner injected here by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Assessment Hero Card -->
+      <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary-dark to-indigo-950 text-white shadow-lg p-6 flex flex-col gap-4">
+        <div class="flex items-start justify-between gap-4 relative z-10">
+          <div class="flex flex-col gap-2 max-w-xl">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-sm w-fit">
+              <span class="material-symbols-outlined text-[14px] text-amber-300">bolt</span>
+              <span class="label-sm text-white tracking-wider uppercase font-bold">Zero Fluff Strategy</span>
+            </div>
+            <h2 class="headline-lg text-white font-extrabold leading-snug">Personalized roadmaps cut through course noise.</h2>
+            <p class="body-md text-indigo-100">Set your proficiency, weekly study hours, budget, and certification targets to generate a sequenced curriculum with audited paths.</p>
+          </div>
+          <div class="hidden sm:flex w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-md items-center justify-center shrink-0 shadow-inner">
+            <span class="material-symbols-outlined text-[36px] text-white">explore_nearby</span>
+          </div>
+        </div>
+
+        <!-- Quick Metrics -->
+        <div class="grid grid-cols-3 gap-3 relative z-10 pt-1">
+          <div class="bg-white/10 rounded-xl p-2.5 flex flex-col items-center text-center backdrop-blur-sm">
+            <span class="headline-md font-bold text-white">60s</span>
+            <span class="label-sm text-indigo-200">Assessment</span>
+          </div>
+          <div class="bg-white/10 rounded-xl p-2.5 flex flex-col items-center text-center backdrop-blur-sm">
+            <span class="headline-md font-bold text-white">$0</span>
+            <span class="label-sm text-indigo-200">Free audit paths</span>
+          </div>
+          <div class="bg-white/10 rounded-xl p-2.5 flex flex-col items-center text-center backdrop-blur-sm">
+            <span class="headline-md font-bold text-white">100%</span>
+            <span class="label-sm text-indigo-200">Targeted</span>
+          </div>
+        </div>
+
+        <button class="relative z-10 w-full h-12 rounded-xl bg-white text-primary font-bold label-lg flex items-center justify-center gap-2 shadow-md hover:bg-indigo-50 active:scale-[0.99] transition-all"
+                data-view-target="questionnaire">
+          <span>Take 60s Assessment</span>
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </button>
+
+        <div class="absolute -right-10 -bottom-14 w-52 h-52 rounded-full bg-white/10 blur-2xl pointer-events-none"></div>
+      </div>
+
+      <!-- Target Industry Credentials Grid -->
+      <div class="flex flex-col gap-2">
+        <div class="flex items-center justify-between">
+          <h2 class="headline-sm text-on-surface font-bold">Target Industry Credentials</h2>
+          <button class="label-sm text-primary font-bold hover:underline" data-view-target="catalog">Browse All</button>
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          <div class="card p-3 flex flex-col items-center text-center gap-2 cursor-pointer hover:shadow-md transition-all"
+               data-view-target="catalog" onclick="document.getElementById('filter-cert').value='industry-recognized';">
+            <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined text-[22px]">verified</span>
+            </div>
+            <span class="label-md font-bold text-on-surface">Google Certs</span>
+            <span class="label-sm text-on-surface-variant">5 Roadmaps</span>
+          </div>
+
+          <div class="card p-3 flex flex-col items-center text-center gap-2 cursor-pointer hover:shadow-md transition-all"
+               data-view-target="catalog">
+            <div class="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-950 flex items-center justify-center text-amber-800 dark:text-amber-200">
+              <span class="material-symbols-outlined text-[22px]">cloud_done</span>
+            </div>
+            <span class="label-md font-bold text-on-surface">AWS Cloud</span>
+            <span class="label-sm text-on-surface-variant">4 Roadmaps</span>
+          </div>
+
+          <div class="card p-3 flex flex-col items-center text-center gap-2 cursor-pointer hover:shadow-md transition-all"
+               data-view-target="catalog">
+            <div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center text-emerald-800 dark:text-emerald-200">
+              <span class="material-symbols-outlined text-[22px]">layers</span>
+            </div>
+            <span class="label-md font-bold text-on-surface">Meta & Dev</span>
+            <span class="label-sm text-on-surface-variant">6 Roadmaps</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Curated Example Learning Paths Section -->
+      <section id="section-curated-paths" class="curated-paths-section flex flex-col gap-3">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[22px]">route</span>
+              <h2 class="headline-sm text-on-surface font-bold">Curated Learning Paths</h2>
+              <span class="badge badge-primary text-[11px] font-semibold">6 Tracks</span>
+            </div>
+            <p class="body-sm text-on-surface-variant">Structured roadmaps matching active job-market requirements</p>
+          </div>
+          
+          <div class="flex items-center gap-2 self-start sm:self-auto">
+            <!-- View Mode Switcher: Grid vs Slider -->
+            <div class="flex items-center bg-surface-container-high dark:bg-surface-container rounded-lg p-0.5" role="group" aria-label="Layout view mode">
+              <button id="paths-view-grid-btn" class="px-2.5 py-1 rounded-md label-xs font-bold flex items-center gap-1 transition-all bg-primary text-on-primary shadow-sm" title="Multi-column Grid View" aria-pressed="true">
+                <span class="material-symbols-outlined text-[15px]">grid_view</span>
+                <span class="hidden sm:inline">Grid</span>
+              </button>
+              <button id="paths-view-carousel-btn" class="px-2.5 py-1 rounded-md label-xs font-bold flex items-center gap-1 transition-all text-on-surface-variant hover:text-on-surface" title="Slider Carousel View" aria-pressed="false">
+                <span class="material-symbols-outlined text-[15px]">view_carousel</span>
+                <span class="hidden sm:inline">Slider</span>
+              </button>
+            </div>
+
+            <!-- Carousel Navigation (Active in Slider Mode and on Mobile) -->
+            <div id="paths-carousel-controls" class="flex items-center gap-1.5">
+              <span id="paths-page-indicator" class="label-xs text-on-surface-variant font-bold px-2 py-0.5 rounded bg-surface-container-high dark:bg-surface-container hidden">1 / 2</span>
+              <button id="carousel-prev" class="showcase-nav-btn" aria-label="Previous learning paths" title="Previous">
+                <span class="material-symbols-outlined text-[16px]">chevron_left</span>
+              </button>
+              <button id="carousel-next" class="showcase-nav-btn" aria-label="Next learning paths" title="Next">
+                <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="paths-container-wrapper" class="paths-container-wrapper">
+          <div id="paths-carousel-track" class="paths-grid-layout" tabindex="0" role="region" aria-label="Learning paths track">
+            <!-- Dynamic carousel cards injected here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           INTERNSHIPS & APPRENTICESHIPS SECTION
+           ================================================================== -->
+      <section id="section-internships" class="flex flex-col gap-3 pt-2">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-secondary text-[22px]">work</span>
+              <h2 class="headline-sm text-on-surface font-bold">Career & Apprenticeship Opportunities</h2>
+            </div>
+            <p class="body-sm text-on-surface-variant">Curated open-access internships, global open-source programs, and apprenticeships</p>
+          </div>
+          <span class="badge badge-secondary self-start sm:self-auto">
+            <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            Verified Programs Available
+          </span>
+        </div>
+
+        <!-- Internships Filter Bar -->
+        <div class="card p-3 flex flex-wrap items-center gap-2.5">
+          <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+            <button class="internship-filter-btn active px-3 py-1 rounded-full label-sm font-semibold bg-primary text-on-primary" data-remote="all">All Modes</button>
+            <button class="internship-filter-btn px-3 py-1 rounded-full label-sm font-semibold bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest" data-remote="Remote">100% Remote</button>
+            <button class="internship-filter-btn px-3 py-1 rounded-full label-sm font-semibold bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest" data-remote="Hybrid">Hybrid</button>
+          </div>
+
+          <div class="h-4 w-px bg-outline-variant hidden sm:block"></div>
+
+          <div class="flex items-center gap-2 flex-1 min-w-[200px]">
+            <select id="intern-field-filter" class="input-text h-8 text-[12px] py-0 px-2 flex-1" aria-label="Filter internships by field">
+              <option value="all">All Fields</option>
+              <option value="Software Engineering">Software Engineering</option>
+              <option value="Open Source">Open Source Programs</option>
+              <option value="Data & AI">Data & Research</option>
+              <option value="Digital Marketing">Marketing & Growth</option>
+              <option value="UI/UX Design">UI/UX Design</option>
+            </select>
+
+            <select id="intern-pay-filter" class="input-text h-8 text-[12px] py-0 px-2 flex-1" aria-label="Filter internships by compensation">
+              <option value="all">All Pay Types</option>
+              <option value="paid">Paid / Stipend Only</option>
+              <option value="unpaid">Unpaid / Volunteering</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Internships Grid -->
+        <div id="internships-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Injected dynamically by JS -->
+        </div>
+      </section>
+
+      <!-- Featured Free Courses Grid Section -->
+      <section class="flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="headline-sm text-on-surface font-bold">Featured Free Courses & Audit Options</h2>
+            <p class="body-sm text-on-surface-variant">Zero tuition barriers with transparent certificate status</p>
+          </div>
+          <button class="label-sm text-primary font-bold hover:underline" data-view-target="catalog">View All</button>
+        </div>
+        <div id="featured-free-courses-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Featured free course cards injected here -->
+        </div>
+      </section>
+
+    </section>
+
+
+    <!-- ====================================================================
+         VIEW 2: CONSTRAINT DISCOVERY QUESTIONNAIRE
+         ==================================================================== -->
+    <section id="view-questionnaire" class="hidden flex flex-col gap-6">
+
+      <!-- Progress Header -->
+      <div class="flex flex-col gap-2">
+        <div class="flex items-center justify-between label-md">
+          <span class="flex items-center gap-1 font-semibold text-primary">
+            <span class="material-symbols-outlined text-[16px]">tune</span>
+            Personalized Diagnostic
+          </span>
+          <span class="font-bold text-on-surface">5 Key Constraints</span>
+        </div>
+        <div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+          <div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 80%;"></div>
+        </div>
+      </div>
+
+      <div>
+        <h1 class="headline-lg font-bold text-on-surface">Tailor Your Learning Path</h1>
+        <p class="body-md text-on-surface-variant mt-1">We evaluate your proficiency, budget, and weekly bandwidth to construct a sequence of free courses, practice arenas, and credential options.</p>
+      </div>
+
+      <!-- Question 1: Goal / Area -->
+      <div class="flex flex-col gap-2.5">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center label-sm font-bold">1</span>
+          <h2 class="headline-sm text-on-surface font-bold">What is your primary study goal?</h2>
+        </div>
+        <div id="goal-options" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <div class="option-choice selected" data-value="Data Analysis">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">check</span></span>
+            <div>
+              <div class="label-lg text-on-surface font-bold">Data Analytics</div>
+              <p class="body-sm text-on-surface-variant">SQL, spreadsheets, Tableau, BigQuery, and statistical storytelling.</p>
+            </div>
+          </div>
+
+          <div class="option-choice" data-value="Python">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">radio_button_unchecked</span></span>
+            <div>
+              <div class="label-lg text-on-surface font-bold">Python for Beginners</div>
+              <p class="body-sm text-on-surface-variant">Programming fundamentals, automation, data structures, and CLI tools.</p>
+            </div>
+          </div>
+
+          <div class="option-choice" data-value="Web Development">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">radio_button_unchecked</span></span>
+            <div>
+              <div class="label-lg text-on-surface font-bold">Full-Stack Web Dev</div>
+              <p class="body-sm text-on-surface-variant">Semantic HTML, modern CSS, JavaScript ES6+, and Node.js APIs.</p>
+            </div>
+          </div>
+
+          <div class="option-choice" data-value="UI/UX">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">radio_button_unchecked</span></span>
+            <div>
+              <div class="label-lg text-on-surface font-bold">UI/UX Design</div>
+              <p class="body-sm text-on-surface-variant">Figma auto-layout, wireframes, user testing, and case studies.</p>
+            </div>
+          </div>
+
+          <div class="option-choice" data-value="Digital Marketing">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">radio_button_unchecked</span></span>
+            <div>
+              <div class="label-lg text-on-surface font-bold">Digital Marketing</div>
+              <p class="body-sm text-on-surface-variant">Inbound lead gen, SEO, Google Analytics 4, and paid ad strategies.</p>
+            </div>
+          </div>
+
+          <div class="option-choice" data-value="Conversational Spanish">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">radio_button_unchecked</span></span>
+            <div>
+              <div class="label-lg text-on-surface font-bold">Conversational Spanish/French</div>
+              <p class="body-sm text-on-surface-variant">Accelerated audio drills, workplace fluency, and situational dialogues.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 2: Experience Level -->
+      <div class="flex flex-col gap-2.5">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center label-sm font-bold">2</span>
+          <h2 class="headline-sm text-on-surface font-bold">Current Experience Level</h2>
+        </div>
+        <div id="experience-options" class="flex flex-col gap-2">
+          <div class="option-choice selected" data-value="beginner">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">check</span></span>
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <span class="label-lg font-bold text-on-surface">Absolute Beginner</span>
+                <span class="badge badge-secondary">Recommended</span>
+              </div>
+              <p class="body-sm text-on-surface-variant">No prior coding, analytics, or design background. Start with zero-friction fundamentals.</p>
+            </div>
+          </div>
+
+          <div class="option-choice" data-value="intermediate">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">radio_button_unchecked</span></span>
+            <div>
+              <span class="label-lg font-bold text-on-surface">Intermediate</span>
+              <p class="body-sm text-on-surface-variant">Comfortable with basics (spreadsheet formulas, basic loops). Skip introductory chapters.</p>
+            </div>
+          </div>
+
+          <div class="option-choice" data-value="advanced">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">radio_button_unchecked</span></span>
+            <div>
+              <span class="label-lg font-bold text-on-surface">Advanced</span>
+              <p class="body-sm text-on-surface-variant">Ready for complex pipelines, cloud sandboxes, and verified capstone certifications.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 3: Weekly Commitment -->
+      <div class="flex flex-col gap-2.5">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center label-sm font-bold">3</span>
+          <h2 class="headline-sm text-on-surface font-bold">Weekly Time Commitment</h2>
+        </div>
+        <div id="hours-options" class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <div class="option-choice" data-value="3-5">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">radio_button_unchecked</span></span>
+            <div>
+              <div class="label-lg font-bold text-on-surface">3–5 hrs/wk</div>
+              <p class="body-sm text-on-surface-variant">Casual pace • 4-6 months</p>
+            </div>
+          </div>
+
+          <div class="option-choice selected" data-value="8-10">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">check</span></span>
+            <div>
+              <div class="label-lg font-bold text-on-surface">8–10 hrs/wk</div>
+              <p class="body-sm text-on-surface-variant">Recommended sweet spot</p>
+            </div>
+          </div>
+
+          <div class="option-choice" data-value="15+">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">radio_button_unchecked</span></span>
+            <div>
+              <div class="label-lg font-bold text-on-surface">15+ hrs/wk</div>
+              <p class="body-sm text-on-surface-variant">Intensive career sprint</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 4: Budget Tier -->
+      <div class="flex flex-col gap-2.5">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center label-sm font-bold">4</span>
+          <h2 class="headline-sm text-on-surface font-bold">Monthly Budget Preference</h2>
+        </div>
+        <div id="budget-options" class="flex flex-col gap-2">
+          <div class="option-choice" data-value="free">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">radio_button_unchecked</span></span>
+            <div>
+              <div class="label-lg font-bold text-on-surface">100% Free / Open Source only ($0)</div>
+              <p class="body-sm text-on-surface-variant">Prioritize freeCodeCamp, The Odin Project, open textbooks, and free Coursera course audits.</p>
+            </div>
+          </div>
+
+          <div class="option-choice selected" data-value="budget">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">check</span></span>
+            <div>
+              <div class="label-lg font-bold text-on-surface">Budget-Conscious ($1–$49/mo)</div>
+              <p class="body-sm text-on-surface-variant">Access Coursera Plus or interactive sandboxes with option to audit for free.</p>
+            </div>
+          </div>
+
+          <div class="option-choice" data-value="flexible">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">radio_button_unchecked</span></span>
+            <div>
+              <div class="label-lg font-bold text-on-surface">Flexible / Employer Reimbursed</div>
+              <p class="body-sm text-on-surface-variant">Includes official proctored Pearson VUE exam vouchers (e.g. AWS or CompTIA).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 5: Credential Need -->
+      <div class="flex flex-col gap-2.5">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center label-sm font-bold">5</span>
+          <h2 class="headline-sm text-on-surface font-bold">Target Credential</h2>
+        </div>
+        <div id="credential-options" class="flex flex-col gap-2">
+          <div class="option-choice selected" data-value="industry-recognized">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">check</span></span>
+            <div>
+              <div class="label-lg font-bold text-on-surface">Industry-Recognized Certification</div>
+              <p class="body-sm text-on-surface-variant">Google, AWS, Meta, or CompTIA. Highest employer signal for LinkedIn and resumes.</p>
+            </div>
+          </div>
+
+          <div class="option-choice" data-value="course-completion">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">radio_button_unchecked</span></span>
+            <div>
+              <div class="label-lg font-bold text-on-surface">Course Completion Certificate</div>
+              <p class="body-sm text-on-surface-variant">Validates coursework completion without third-party proctored examination.</p>
+            </div>
+          </div>
+
+          <div class="option-choice" data-value="none">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">radio_button_unchecked</span></span>
+            <div>
+              <div class="label-lg font-bold text-on-surface">Practical Skills & Portfolio Only ($0 Cert Fees)</div>
+              <p class="body-sm text-on-surface-variant">Zero fees for paper badges. Focus exclusively on shipping 3 end-to-end GitHub portfolio pieces.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 6: Learning Style -->
+      <div class="flex flex-col gap-2.5">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center label-sm font-bold">6</span>
+          <h2 class="headline-sm text-on-surface font-bold">Preferred Learning Style</h2>
+        </div>
+        <div id="style-options" class="flex flex-wrap gap-2">
+          <div class="option-choice selected shrink-0" data-value="hands-on">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">check</span></span>
+            <span class="label-md font-semibold text-on-surface">Hands-on / Projects</span>
+          </div>
+          <div class="option-choice shrink-0" data-value="video">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">radio_button_unchecked</span></span>
+            <span class="label-md font-semibold text-on-surface">Video-heavy</span>
+          </div>
+          <div class="option-choice shrink-0" data-value="docs">
+            <span class="option-radio-ring"><span class="material-symbols-outlined text-[14px] option-check-icon">radio_button_unchecked</span></span>
+            <span class="label-md font-semibold text-on-surface">Docs & Sandboxes</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Cohort Match Callout -->
+      <div class="card bg-surface-container-low flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0 text-primary">
+          <span class="material-symbols-outlined text-[22px]">auto_fix_high</span>
+        </div>
+        <div>
+          <p class="label-md font-bold text-on-surface">Dynamic Cohort Match</p>
+          <p class="body-sm text-on-surface-variant">2,410 learners matched with similar constraints this month.</p>
+        </div>
+      </div>
+
+      <!-- Bottom Floating Action Bar -->
+      <div class="sticky bottom-16 left-0 right-0 p-3 bg-surface-container-lowest/95 backdrop-blur-md rounded-2xl shadow-xl flex items-center gap-3 z-30">
+        <button id="btn-questionnaire-back" class="btn btn-secondary flex-1">
+          <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+          <span>Back</span>
+        </button>
+        <button id="btn-generate-roadmap" class="btn btn-primary flex-[2]">
+          <span>Generate My Roadmap</span>
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </button>
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================================
+         VIEW 3: PERSONALIZED LEARNING PATH ROADMAP
+         ==================================================================== -->
+    <section id="view-mypath" class="hidden flex flex-col gap-6">
+
+      <!-- Path Overview Header Card -->
+      <div class="card p-6 relative overflow-hidden bg-surface-container-lowest">
+        <div class="absolute -right-10 -top-10 w-40 h-40 bg-primary-fixed/30 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="relative z-10 flex flex-col gap-3">
+          <div class="flex items-center gap-1.5">
+            <span class="badge badge-secondary">
+              <span class="material-symbols-outlined text-[13px]">auto_awesome</span>
+              AI Curated Roadmap
+            </span>
+          </div>
+
+          <h1 id="path-title" class="headline-lg text-on-surface font-extrabold leading-snug">
+            Junior Data Analyst to Certified Pro
+          </h1>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <span id="path-weeks" class="badge badge-neutral">10 Weeks</span>
+            <span id="path-hours" class="badge badge-neutral">8 hrs/week</span>
+            <span id="path-savings" class="badge badge-secondary font-bold">$411 total saved</span>
+          </div>
+
+          <!-- Path Rationale Banner -->
+          <div id="path-rationale-box" class="p-3 rounded-xl bg-surface-container-low body-sm text-on-surface-variant leading-relaxed">
+            <!-- Injected by JS -->
+          </div>
+
+          <!-- Live Toggle: Budget Optimization Mode -->
+          <div class="bg-surface-container-low rounded-xl p-3 flex flex-col gap-2 mt-1">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary text-[20px]">bolt</span>
+                <span class="label-md font-bold text-on-surface">Budget Optimization Mode</span>
+              </div>
+              <button id="budget-toggle" type="button" class="w-11 h-6 bg-secondary rounded-full p-0.5 transition-colors relative flex items-center" aria-pressed="true">
+                <span id="toggle-knob" class="w-5 h-5 bg-white rounded-full shadow-sm transform translate-x-5 transition-transform flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[12px] text-secondary">check</span>
+                </span>
+              </button>
+            </div>
+            <div id="savings-banner-text" class="body-sm text-on-secondary-container pl-0.5">
+              Saved <strong>$411</strong> using audited tracks & open-source sandboxes
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress & Momentum Bento -->
+      <div class="grid grid-cols-1 sm:grid-cols-12 gap-3">
+        <div class="sm:col-span-7 card p-4 flex flex-col justify-between">
+          <span class="label-sm uppercase tracking-wider text-on-surface-variant font-bold">Active Path</span>
+          <div class="headline-sm font-bold text-on-surface mt-0.5">Stage 2 of 5</div>
+          <div class="flex items-center gap-3 my-2">
+            <div class="relative w-14 h-14 flex items-center justify-center flex-shrink-0">
+              <svg class="w-full h-full transform -rotate-90" viewBox="0 0 48 48">
+                <circle class="text-surface-container-high" cx="24" cy="24" fill="none" r="20" stroke="currentColor" stroke-width="4.5"></circle>
+                <circle class="text-primary" cx="24" cy="24" fill="none" r="20" stroke="currentColor" stroke-dasharray="125.66" stroke-dashoffset="77.9" stroke-linecap="round" stroke-width="4.5"></circle>
+              </svg>
+              <span class="absolute label-md font-bold text-primary">38%</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="label-sm text-on-surface-variant">Overall Journey</span>
+              <span class="body-sm font-semibold text-on-surface">19 hrs of 50 hrs</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5 text-on-surface-variant label-sm pt-1">
+            <span class="material-symbols-outlined text-[15px] text-amber-500">flag</span>
+            <span>Next Goal: SQL Capstone</span>
+          </div>
+        </div>
+
+        <div class="sm:col-span-5 flex flex-col gap-3">
+          <div class="card p-3.5 flex items-center gap-3 flex-1">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950 flex items-center justify-center text-amber-800 dark:text-amber-200 shrink-0">
+              <span class="material-symbols-outlined text-[22px]">local_fire_department</span>
+            </div>
+            <div>
+              <div class="headline-sm font-bold text-on-surface">5 Days</div>
+              <div class="label-sm text-on-surface-variant">Study Streak</div>
+            </div>
+          </div>
+
+          <div class="card p-3.5 flex items-center gap-3 flex-1">
+            <div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+              <span class="material-symbols-outlined text-[22px]">speed</span>
+            </div>
+            <div>
+              <div class="label-lg font-bold text-on-surface">Ahead 14%</div>
+              <div class="label-sm text-secondary font-semibold">Pace vs Cohort</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Curriculum Roadmap Timeline -->
+      <section class="flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="headline-sm text-on-surface font-bold">Curriculum Roadmap</h2>
+            <p class="body-sm text-on-surface-variant">Sequenced milestones with step rationales and alternative tracks</p>
+          </div>
+          <button class="btn btn-secondary btn-sm" data-view-target="questionnaire">
+            <span class="material-symbols-outlined text-[15px]">edit</span>
+            <span>Refine Constraints</span>
+          </button>
+        </div>
+
+        <div id="path-milestones-timeline" class="flex flex-col gap-2">
+          <!-- Dynamic milestones rendered here -->
+        </div>
+      </section>
+
+      <!-- Sticky Action Bar -->
+      <div class="sticky bottom-16 left-0 right-0 p-3 bg-surface-container-lowest/95 backdrop-blur-md rounded-2xl shadow-xl flex items-center gap-3 z-30">
+        <button class="btn btn-secondary flex-1" data-view-target="practice">
+          <span class="material-symbols-outlined text-[18px]">terminal</span>
+          <span>Practice Arena</span>
+        </button>
+        <button class="btn btn-primary flex-[1.4]" data-view-target="practice">
+          <span class="material-symbols-outlined text-[18px]">play_circle</span>
+          <span>Continue Lesson</span>
+        </button>
+      </div>
+
+    </section>
+
+
+    <!-- ====================================================================
+         VIEW 4: COURSE MATRIX & PRACTICE ARENA
+         ==================================================================== -->
+    <section id="view-practice" class="hidden flex flex-col gap-6">
+
+      <!-- Breadcrumbs & Header -->
+      <div class="flex flex-col gap-1">
+        <nav class="flex items-center gap-1.5 label-sm text-on-surface-variant">
+          <span class="cursor-pointer hover:text-primary" data-view-target="mypath">My Path</span>
+          <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+          <span class="cursor-pointer hover:text-primary" data-view-target="catalog">Data Analytics</span>
+          <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+          <span class="text-primary font-bold">Module Deep-Dive</span>
+        </nav>
+        <h1 class="headline-lg font-bold text-on-surface mt-1">Module 2 Deep-Dive: SQL & Relational Databases</h1>
+        <p class="body-md text-on-surface-variant">Master schema design, multi-table joins, subqueries, and window functions through verified curricula and real-world queries.</p>
+      </div>
+
+      <!-- Curated Matrix -->
+      <section class="flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[20px]">verified</span>
+            <h2 class="headline-sm text-on-surface font-bold">Curated Course Matrix</h2>
+          </div>
+          <span class="badge badge-verified">
+            <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            Verified Mar 2025
+          </span>
+        </div>
+
+        <!-- Top Verified Recommendation -->
+        <div class="card p-5 relative overflow-hidden bg-surface-container-lowest shadow-md border-l-4 border-l-primary">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-xl bg-primary-fixed flex items-center justify-center text-primary font-bold shrink-0">
+                <span class="material-symbols-outlined text-[24px]">database</span>
+              </div>
+              <div>
+                <span class="label-sm text-primary uppercase font-bold tracking-wider">Top Recommendation</span>
+                <h3 class="headline-sm text-on-surface font-bold">Google Data Analytics: Process Data with SQL</h3>
+              </div>
+            </div>
+          </div>
+
+          <p class="body-sm text-on-surface-variant mb-4">Official Coursera specialization module focusing on BigQuery syntax, data cleansing workflows, and robust relational logic.</p>
+
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="p-3 rounded-xl bg-surface-container-low flex flex-col justify-between">
+              <span class="label-sm text-on-surface-variant">Employer Score</span>
+              <div class="headline-md font-bold text-primary mt-0.5">92<span class="body-sm text-outline font-normal"> / 100</span></div>
+              <span class="label-sm text-secondary font-semibold mt-1 flex items-center gap-1">
+                <span class="material-symbols-outlined text-[13px]">workspace_premium</span> High Recognition
+              </span>
+            </div>
+
+            <div class="p-3 rounded-xl bg-surface-container-low flex flex-col justify-between">
+              <span class="label-sm text-on-surface-variant">Cost & Duration</span>
+              <div class="headline-md font-bold text-on-surface mt-0.5">$39<span class="label-sm text-on-surface-variant font-normal">/mo</span></div>
+              <span class="label-sm text-secondary font-semibold mt-1 flex items-center gap-0.5">
+                <span class="material-symbols-outlined text-[13px]">savings</span> Audit Free (Save $39)
+              </span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <span class="badge badge-secondary">
+              <span class="material-symbols-outlined text-[14px]">school</span> Professional Cert Component
+            </span>
+            <span class="badge badge-neutral">
+              <span class="material-symbols-outlined text-[14px]">schedule</span> 18 hrs completion
+            </span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <a href="https://www.coursera.org/learn/process-data" target="_blank" rel="noopener noreferrer" class="btn btn-primary flex-1">
+              <span>Enroll via Coursera</span>
+              <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+            </a>
+            <button class="btn btn-secondary" onclick="document.getElementById('practice-audit-tip').classList.toggle('hidden');" title="Audit Tip">
+              <span class="material-symbols-outlined text-[20px]">lightbulb</span>
+              <span class="hidden sm:inline">Audit Tip</span>
+            </button>
+          </div>
+
+          <div id="practice-audit-tip" class="hidden mt-3 p-3.5 bg-tertiary-fixed text-on-tertiary-fixed rounded-xl body-sm">
+            <strong>Pro-tip for Free Access:</strong> Click "Enroll", then choose "Audit the single course" at the bottom of the prompt to access all video lectures and quizzes for $0.
+          </div>
+        </div>
+
+        <!-- Budget Alternative -->
+        <div class="card p-5 bg-surface-container-lowest">
+          <div class="flex items-center justify-between mb-2">
+            <span class="badge badge-secondary uppercase tracking-wider font-bold">Budget Alternative</span>
+            <span class="label-sm text-secondary font-bold flex items-center gap-0.5">
+              <span class="material-symbols-outlined text-[15px]">money_off</span> 100% Free
+            </span>
+          </div>
+          <h3 class="headline-sm text-on-surface font-bold">The Odin Project & freeCodeCamp</h3>
+          <p class="body-sm text-on-surface-variant mt-1 mb-3">Zero-cost, open-source PostgreSQL mastery curriculum. Covers relational schema design, normalization up to 3NF, and hands-on terminal bash scripting.</p>
+
+          <div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex items-center gap-2">
+              <span class="badge badge-neutral">Self-Paced</span>
+              <span class="badge badge-neutral">PostgreSQL Focus</span>
+            </div>
+            <a href="https://www.freecodecamp.org/learn/relational-database/" target="_blank" rel="noopener noreferrer" class="label-md text-primary font-bold flex items-center gap-1 hover:underline">
+              <span>Explore Syllabus</span>
+              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Practice & Validation Arena -->
+      <section class="flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary text-[20px]">terminal</span>
+            <h2 class="headline-sm text-on-surface font-bold">Practice & Validation Arena</h2>
+          </div>
+          <span class="label-sm text-on-surface-variant">3 Tasks Ready</span>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <!-- Drill 1 -->
+          <div class="card p-4 hover:shadow-md transition-all">
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="badge badge-primary">Query Drills</span>
+                  <span class="label-sm text-on-surface-variant">Difficulty: Easy to Medium</span>
+                </div>
+                <h3 class="headline-sm text-on-surface font-semibold">LeetCode 50 SQL Study Plan</h3>
+                <p class="body-sm text-on-surface-variant mt-0.5">50 curated queries targeting window functions, self-joins, consecutive login streaks, and aggregate filters.</p>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+                <span class="material-symbols-outlined text-[20px]">code</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
+              <span class="label-sm text-on-surface-variant">16/50 solved</span>
+              <a href="https://leetcode.com/studyplan/top-sql-50/" target="_blank" rel="noopener noreferrer" class="label-md font-bold text-primary flex items-center gap-0.5 hover:underline">
+                Launch Problem Set <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Drill 2 -->
+          <div class="card p-4 hover:shadow-md transition-all">
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="badge badge-tertiary">Real-World Data</span>
+                  <span class="label-sm text-on-surface-variant">120k rows dataset</span>
+                </div>
+                <h3 class="headline-sm text-on-surface font-semibold">Kaggle: E-Commerce Customer Trends</h3>
+                <p class="body-sm text-on-surface-variant mt-0.5">Interactive Jupyter/SQL sandbox. Calculate cohort retention, churn rates, and average cart size across multiple table clusters.</p>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-secondary shrink-0">
+                <span class="material-symbols-outlined text-[20px]">dataset</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
+              <span class="label-sm text-secondary font-semibold">4 relational tables ready</span>
+              <a href="https://www.kaggle.com/datasets" target="_blank" rel="noopener noreferrer" class="label-md font-bold text-primary flex items-center gap-0.5 hover:underline">
+                Open Notebook <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Drill 3 -->
+          <div class="card p-4 hover:shadow-md transition-all">
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="badge badge-secondary">Skill Validation</span>
+                  <span class="label-sm text-on-surface-variant">45 mins timed</span>
+                </div>
+                <h3 class="headline-sm text-on-surface font-semibold">SkillPath SQL Mock Assessment</h3>
+                <p class="body-sm text-on-surface-variant mt-0.5">25 timed scenario-based questions simulating Google & Meta technical screening rubrics.</p>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+                <span class="material-symbols-outlined text-[20px]">timer</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
+              <span class="badge badge-neutral">Passing mark: 80%</span>
+              <span class="label-sm text-outline font-semibold">Not Attempted</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Live Interactive Sandbox Terminal -->
+      <section class="card p-5 bg-surface-container-low flex flex-col gap-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[22px]">terminal</span>
+            <h3 class="headline-sm text-on-surface font-bold">Interactive Sandbox Terminal</h3>
+          </div>
+          <button id="launch-sandbox-btn" class="btn btn-primary btn-sm">
+            <span class="material-symbols-outlined text-[16px]">terminal</span>
+            <span>Launch Sandbox</span>
+          </button>
+        </div>
+
+        <div class="sandbox-terminal">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="terminal-dot dot-red"></span>
+              <span class="terminal-dot dot-yellow"></span>
+              <span class="terminal-dot dot-green"></span>
+            </div>
+            <span>bash — postgresql@skillpath:~/db-sandbox</span>
+          </div>
+          <pre id="terminal-output" class="terminal-output">Ready. Click 'Launch Sandbox' above or run a query below to interact with PostgreSQL 16.</pre>
+        </div>
+
+        <!-- Query Input & Controls -->
+        <div class="flex flex-col gap-2">
+          <label for="sandbox-query-input" class="label-sm text-on-surface-variant font-semibold">Test SQL Query:</label>
+          <textarea id="sandbox-query-input" rows="2" class="input-text font-mono text-[13px] h-auto p-2.5" 
+                    placeholder="Enter query (e.g. SELECT customer_id, count(order_id) as total_orders FROM orders GROUP BY customer_id HAVING count(order_id) > 5;)">SELECT customer_id, count(order_id) as total_orders FROM orders GROUP BY customer_id HAVING count(order_id) > 5;</textarea>
+          <div class="flex items-center gap-2 justify-end">
+            <button id="reset-query-btn" class="btn btn-secondary btn-sm">Reset</button>
+            <button id="run-query-btn" class="btn btn-primary btn-sm">
+              <span class="material-symbols-outlined text-[16px]">play_arrow</span>
+              <span>Run Query</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Module Validation Action -->
+        <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div class="text-left w-full sm:w-auto">
+            <p class="label-md font-bold text-on-surface">Finished with this module?</p>
+            <p class="body-sm text-on-surface-variant">Validating updates your roadmap status and unlocks Milestone 3.</p>
+          </div>
+          <button id="validate-module-btn" class="btn btn-secondary w-full sm:w-auto">
+            <span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+            <span id="validate-btn-text">Mark Module as Validated</span>
+          </button>
+        </div>
+      </section>
+
+    </section>
+
+
+    <!-- ====================================================================
+         VIEW 5: FULL COURSE CATALOG & DIRECTORY
+         ==================================================================== -->
+    <section id="view-catalog" class="hidden flex flex-col gap-6">
+
+      <div>
+        <h1 class="headline-lg font-bold text-on-surface">Course & Certification Directory</h1>
+        <p class="body-md text-on-surface-variant mt-1">Search and filter verified learning resources across technical and career tracks with transparent pricing and audit paths.</p>
+      </div>
+
+      <!-- Filters Bar -->
+      <div class="card p-4 flex flex-col gap-3">
+        <div class="relative w-full">
+          <span class="material-symbols-outlined absolute left-3.5 top-3 text-outline text-[20px]">search</span>
+          <input id="catalog-search-input" class="input-text pl-10 h-11" placeholder="Search by title, skill, or provider..." type="text"/>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <div>
+            <label for="filter-level" class="label-sm text-on-surface-variant font-semibold mb-1 block">Level</label>
+            <select id="filter-level" class="input-text h-10 text-[13px]">
+              <option value="all">All Levels</option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="filter-price" class="label-sm text-on-surface-variant font-semibold mb-1 block">Course Tuition</label>
+            <select id="filter-price" class="input-text h-10 text-[13px]">
+              <option value="all">All Prices</option>
+              <option value="free">Free Only ($0)</option>
+              <option value="paid">Paid Only</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="filter-cert" class="label-sm text-on-surface-variant font-semibold mb-1 block">Certificate Type</label>
+            <select id="filter-cert" class="input-text h-10 text-[13px]">
+              <option value="all">All Certificates</option>
+              <option value="industry-recognized">Industry-Recognized</option>
+              <option value="course-completion">Course Completion</option>
+              <option value="none">None / Portfolio Only</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-1">
+          <span id="catalog-results-count" class="label-sm text-on-surface-variant font-semibold">Loading courses...</span>
+          <button class="label-sm text-primary font-bold hover:underline" onclick="window.clearAllFilters()">Reset Filters</button>
+        </div>
+      </div>
+
+      <!-- Courses Grid -->
+      <div id="catalog-courses-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Injected dynamically -->
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ======================================================================
+       INTERACTIVE LEARNING COACH MODAL & FLOATING TRIGGER
+       ====================================================================== -->
+  <!-- Floating Coach Trigger Button -->
+  <button id="coach-trigger-btn" class="floating-coach-trigger" aria-label="Open SkillPath Learning Coach">
+    <span class="material-symbols-outlined text-[20px]">smart_toy</span>
+    <span>Ask Coach</span>
+    <span class="w-2 h-2 rounded-full bg-emerald-300 animate-ping"></span>
+  </button>
+
+  <!-- Sign In / Sign Up Modal Dialog -->
+  <div id="auth-modal" class="coach-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+    <div class="coach-modal-card" style="max-width: 420px;">
+      <div class="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center">
+            <span class="material-symbols-outlined text-[20px]">person</span>
+          </div>
+          <div>
+            <h3 id="auth-modal-title" class="headline-sm text-on-surface font-bold">Sign In</h3>
+            <span class="label-sm text-secondary font-semibold">Save your path, streak & progress</span>
+          </div>
+        </div>
+        <button id="auth-modal-close" class="showcase-nav-btn" aria-label="Close">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <div class="p-4 flex flex-col gap-3 overflow-y-auto">
+        <div id="auth-error" class="hidden label-sm font-semibold text-red-600 bg-red-50 dark:bg-red-950/40 rounded-lg px-3 py-2"></div>
+
+        <form id="auth-form" class="flex flex-col gap-2.5" onsubmit="return false;">
+          <div id="auth-name-field" class="hidden">
+            <label class="label-xs font-bold text-on-surface-variant block mb-1">Name</label>
+            <input id="auth-name-input" type="text" class="input-text w-full" placeholder="Your name" autocomplete="name"/>
+          </div>
+          <div>
+            <label class="label-xs font-bold text-on-surface-variant block mb-1">Email</label>
+            <input id="auth-email-input" type="email" class="input-text w-full" placeholder="you@example.com" autocomplete="email" required/>
+          </div>
+          <div>
+            <label class="label-xs font-bold text-on-surface-variant block mb-1">Password</label>
+            <input id="auth-password-input" type="password" class="input-text w-full" placeholder="At least 6 characters" autocomplete="current-password" required/>
+          </div>
+          <button id="auth-submit-btn" type="submit" class="btn btn-primary w-full mt-1">
+            <span id="auth-submit-text">Sign In</span>
+          </button>
+        </form>
+
+        <div class="flex items-center gap-2 my-1">
+          <div class="flex-1 h-px bg-slate-200 dark:bg-slate-800"></div>
+          <span class="label-xs text-on-surface-variant">or</span>
+          <div class="flex-1 h-px bg-slate-200 dark:bg-slate-800"></div>
+        </div>
+
+        <button id="auth-google-btn" class="btn btn-secondary w-full">
+          <span class="material-symbols-outlined text-[18px]">account_circle</span>
+          <span>Continue with Google</span>
+        </button>
+
+        <p class="label-sm text-center text-on-surface-variant mt-1">
+          <span id="auth-toggle-prompt">Don't have an account?</span>
+          <button id="auth-toggle-mode-btn" type="button" class="font-bold text-primary hover:underline">Sign Up</button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coach Modal Dialog -->
+  <div id="coach-modal" class="coach-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="coach-modal-title">
+    <div class="coach-modal-card">
+      <!-- Modal Header -->
+      <div class="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center">
+            <span class="material-symbols-outlined text-[20px]">smart_toy</span>
+          </div>
+          <div>
+            <h3 id="coach-modal-title" class="headline-sm text-on-surface font-bold">SkillPath Learning Coach</h3>
+            <span class="label-sm text-secondary font-semibold">Rules-Based Diagnostic • Transparent Advice</span>
+          </div>
+        </div>
+        <button id="coach-modal-close" class="showcase-nav-btn" aria-label="Close Learning Coach">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <!-- Modal Body / Conversation Area -->
+      <div id="coach-messages-container" class="coach-messages-scroll-area p-4 overflow-y-auto flex-1 flex flex-col gap-3.5 max-h-[60vh]">
+        <!-- Welcome Message from Coach -->
+        <div class="coach-msg coach-msg-bot">
+          <div class="coach-msg-avatar">
+            <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+          </div>
+          <div class="coach-msg-content flex-1">
+            <div class="flex items-center gap-2 mb-1.5">
+              <span class="font-bold text-[13px] text-on-surface">SkillPath Coach</span>
+              <span class="badge badge-primary text-[10px] py-0.5 px-1.5 font-bold">Rules-Based Guide</span>
+            </div>
+            <p class="body-sm text-on-surface-variant leading-relaxed mb-3">
+              👋 <strong>Hi! I am your SkillPath Learning Coach.</strong> Unsure what skill to learn next, how to fit studying into your schedule, or which certificates carry actual industry weight? Type your question below or pick a common scenario:
+            </p>
+            <div class="pt-2 border-t border-slate-200 dark:border-slate-800">
+              <span class="label-xs text-on-surface-variant font-bold uppercase tracking-wider block mb-1.5">Common Inquiries:</span>
+              <div id="coach-presets-container" class="flex flex-wrap gap-1.5">
+                <!-- Injected dynamically by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat History List (All user and coach exchanges appended here) -->
+        <div id="coach-history-list" class="flex flex-col gap-3.5"></div>
+
+        <!-- Thinking / Loading Indicator (shown during API call) -->
+        <div id="coach-loading-indicator" class="hidden coach-msg coach-msg-bot">
+          <div class="coach-msg-avatar">
+            <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+          </div>
+          <div class="coach-msg-content flex items-center gap-2.5 py-3 px-4">
+            <div class="spinner w-4 h-4 border-2"></div>
+            <span class="body-sm font-semibold text-primary">
+              <span id="coach-loading-text">Preparing your answer...</span>
+              <span class="coach-thinking-dots">
+                <span></span><span></span><span></span>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer Input Form -->
+      <form id="coach-chat-form" class="p-3 border-t border-slate-100 dark:border-slate-800 bg-surface-container-low flex flex-col gap-1.5" onsubmit="return false;">
+        <div class="flex items-end gap-2">
+          <div class="flex-1 relative">
+            <textarea id="coach-user-input" rows="1" class="input-text w-full py-2 px-3 text-[13px] resize-none leading-normal" 
+                      placeholder="Ask anything: E.g., 'Is CS50 Python really free?' or 'How do I get an internship?'"
+                      style="max-height: 120px; min-height: 38px;"></textarea>
+          </div>
+          <button id="coach-submit-btn" type="submit" class="btn btn-primary btn-sm h-[38px] px-4 flex items-center gap-1.5 shrink-0" aria-label="Send question to Coach">
+            <span id="coach-submit-text">Ask</span>
+            <span id="coach-submit-icon" class="material-symbols-outlined text-[15px]">send</span>
+          </button>
+        </div>
+        <div class="flex items-center justify-between text-[11px] text-on-surface-variant opacity-70 px-1">
+          <span>Press <kbd class="px-1 py-0.2 rounded bg-surface-container-highest font-mono text-[10px]">Enter</kbd> to send, <kbd class="px-1 py-0.2 rounded bg-surface-container-highest font-mono text-[10px]">Shift+Enter</kbd> for newline</span>
+          <span id="coach-status-hint">Offline rules-based • No external AI required</span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Toast Notification Banner -->
+  <div id="app-toast" class="toast hidden" role="alert" aria-live="assertive">
+    <div class="flex items-center gap-2.5">
+      <span class="material-symbols-outlined text-secondary-fixed text-[22px]">check_circle</span>
+      <span id="toast-message" class="label-md font-semibold text-white">Action completed successfully.</span>
+    </div>
+    <button id="toast-close" class="text-white/80 hover:text-white" aria-label="Close notification">
+      <span class="material-symbols-outlined text-[18px]">close</span>
+    </button>
+  </div>
+
+
+  <!-- Bottom Tab Navigation Bar -->
+  <nav class="app-bottom-nav" aria-label="Bottom Navigation">
+    <button class="nav-item active" data-view="explore" aria-current="page">
+      <span class="material-symbols-outlined">explore</span>
+      <span>Explore</span>
+    </button>
+    <button class="nav-item" data-view="mypath">
+      <span class="material-symbols-outlined">alt_route</span>
+      <span>My Path</span>
+    </button>
+    <button class="nav-item" data-view="practice">
+      <span class="material-symbols-outlined">terminal</span>
+      <span>Practice</span>
+    </button>
+    <button class="nav-item" data-view="catalog">
+      <span class="material-symbols-outlined">menu_book</span>
+      <span>Courses</span>
+    </button>
+  </nav>
+
+  <!-- Application Client Scripts -->
+  <!-- Firebase (Authentication + Firestore) - see frontend/js/firebase-config.js to configure -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+  <script src="/js/firebase-config.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/userData.js"></script>
+
+  <script src="/js/config.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "skillpath-frontend",
+  "version": "1.0.0",
+  "description": "SkillPath UI - Guided Learning & Certification Planner",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "start": "npx serve . -p 3000"
+  }
+}

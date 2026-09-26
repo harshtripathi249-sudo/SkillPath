@@ -1,0 +1,2018 @@
+{
+  "courses": [
+    {
+      "id": "py-cs50p",
+      "title": "CS50's Introduction to Programming with Python",
+      "provider": "Harvard University / edX",
+      "url": "https://cs50.harvard.edu/python/",
+      "subject": "Python",
+      "level": "Beginner",
+      "duration": "10 weeks (3–9 hrs/wk)",
+      "coursePrice": "Free",
+      "isCourseFree": true,
+      "certificatePrice": "$299 (optional edX verified cert, or free Harvard-issued cert upon 70%+ score)",
+      "certificateStatus": "course-completion",
+      "practiceLinks": [
+        {
+          "title": "CS50 Problem Sets & Check50",
+          "url": "https://cs50.harvard.edu/python/2022/psets/",
+          "type": "terminal",
+          "description": "Automated code grading through command-line check50"
+        }
+      ],
+      "source": "Harvard Online / edX Catalog",
+      "lastVerified": "2025-03-01",
+      "isVerified": true,
+      "isFeatured": true,
+      "auditTip": "All lectures, problem sets, and auto-grader tests are 100% free directly on the CS50 portal.",
+      "description": "An introduction to programming using Python, emphasizing problem-solving, data structures, algorithms, and libraries.",
+      "tags": [
+        "Python",
+        "Algorithms",
+        "Free Course",
+        "Harvard"
+      ],
+      "image": "/assets/courses/course_python.jpg",
+      "language": "English"
+    },
+    {
+      "id": "py-py4e",
+      "title": "Python for Everybody Specialization",
+      "provider": "University of Michigan / Coursera",
+      "url": "https://www.py4e.com/",
+      "subject": "Python",
+      "level": "Beginner",
+      "duration": "8 weeks (5 hrs/wk)",
+      "coursePrice": "Free",
+      "isCourseFree": true,
+      "certificatePrice": "$49/mo Coursera subscription (or free full materials at py4e.com)",
+      "certificateStatus": "course-completion",
+      "practiceLinks": [
+        {
+          "title": "PY4E Auto-Grader Sandboxes",
+          "url": "https://www.py4e.com/lessons",
+          "type": "sandbox",
+          "description": "In-browser Python code execution for chapter exercises"
+        }
+      ],
+      "source": "University of Michigan / PY4E Open Access",
+      "lastVerified": "2025-03-05",
+      "isVerified": true,
+      "isFeatured": true,
+      "auditTip": "The entire course textbook, video lectures, and autograder are openly hosted for free at py4e.com.",
+      "description": "Learn to program and analyze data with Python, web scraping, and database manipulation.",
+      "tags": [
+        "Python",
+        "Web Scraping",
+        "Databases",
+        "Free Option"
+      ],
+      "image": "/assets/courses/course_python.jpg",
+      "language": "English"
+    },
+    {
+      "id": "da-google",
+      "title": "Google Data Analytics Professional Certificate",
+      "provider": "Google / Coursera",
+      "url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+      "subject": "Data Analysis",
+      "level": "Beginner",
+      "duration": "6 months (10 hrs/wk) or 10-12 weeks intensive",
+      "coursePrice": "Free to Audit",
+      "isCourseFree": true,
+      "certificatePrice": "$39/mo Coursera subscription or financial aid",
+      "certificateStatus": "industry-recognized",
+      "practiceLinks": [
+        {
+          "title": "Kaggle Capstone Case Study",
+          "url": "https://www.kaggle.com/datasets",
+          "type": "dataset",
+          "description": "Public Bellabeat / Cyclistic bike-share real data sandbox"
+        },
+        {
+          "title": "BigQuery & SQL Practice Arena",
+          "url": "https://cloud.google.com/bigquery",
+          "type": "sandbox",
+          "description": "Google Cloud Sandbox with free monthly query tier"
+        }
+      ],
+      "source": "Google Career Certificates / Coursera",
+      "lastVerified": "2025-03-10",
+      "isVerified": true,
+      "isFeatured": true,
+      "auditTip": "Click 'Enroll' on each individual course of the series and choose 'Audit' to view all videos, labs, and reading materials for $0.",
+      "description": "Gain in-demand skills in spreadsheets, SQL, Tableau, R programming, and data presentation.",
+      "tags": [
+        "SQL",
+        "Tableau",
+        "R",
+        "Industry Credential",
+        "Google"
+      ],
+      "image": "/assets/courses/course_data.jpg",
+      "language": "English"
+    },
+    {
+      "id": "da-fcc-sql",
+      "title": "Relational Database Certification (PostgreSQL & Bash)",
+      "provider": "freeCodeCamp",
+      "url": "https://www.freecodecamp.org/learn/relational-database/",
+      "subject": "Data Analysis",
+      "level": "Beginner to Intermediate",
+      "duration": "6 weeks (5 hrs/wk)",
+      "coursePrice": "Free",
+      "isCourseFree": true,
+      "certificatePrice": "Free (100% Free verified credential upon 5 project submissions)",
+      "certificateStatus": "course-completion",
+      "practiceLinks": [
+        {
+          "title": "Gitpod In-Browser PostgreSQL Container",
+          "url": "https://www.freecodecamp.org/learn/relational-database/",
+          "type": "terminal",
+          "description": "Real VS Code and PostgreSQL terminal running in browser"
+        },
+        {
+          "title": "LeetCode Database 50",
+          "url": "https://leetcode.com/studyplan/top-sql-50/",
+          "type": "challenges",
+          "description": "50 high-yield SQL interview problem drills"
+        }
+      ],
+      "source": "freeCodeCamp Open Curriculum",
+      "lastVerified": "2025-03-12",
+      "isVerified": true,
+      "isFeatured": true,
+      "auditTip": "100% free open-source curriculum with free cloud development environment provided.",
+      "description": "Learn SQL, relational schema architecture, PostgreSQL syntax, and Linux bash scripting by building real terminal apps.",
+      "tags": [
+        "PostgreSQL",
+        "Bash",
+        "100% Free",
+        "Open Source"
+      ],
+      "image": "/assets/courses/course_sql.jpg",
+      "language": "English"
+    },
+    {
+      "id": "web-odin-foundations",
+      "title": "The Odin Project: Foundations & Full-Stack",
+      "provider": "The Odin Project",
+      "url": "https://www.theodinproject.com/paths/foundations/courses/foundations",
+      "subject": "Web Development",
+      "level": "Beginner",
+      "duration": "14 weeks (8-10 hrs/wk)",
+      "coursePrice": "Free",
+      "isCourseFree": true,
+      "certificatePrice": "None (Portfolio pieces & GitHub repos only)",
+      "certificateStatus": "none",
+      "practiceLinks": [
+        {
+          "title": "GitHub Portfolio Showcase",
+          "url": "https://github.com/",
+          "type": "repo",
+          "description": "Real deployment to GitHub Pages and full Git workflow"
+        }
+      ],
+      "source": "The Odin Project Official Documentation",
+      "lastVerified": "2025-03-14",
+      "isVerified": true,
+      "isFeatured": true,
+      "auditTip": "Entirely open source and community driven; zero ads or hidden upgrade tiers.",
+      "description": "Comprehensive full-stack curriculum teaching HTML, CSS, JavaScript, Git, and backend development through authentic project building.",
+      "tags": [
+        "JavaScript",
+        "HTML/CSS",
+        "Git",
+        "Portfolio-Driven",
+        "Free"
+      ],
+      "image": "/assets/courses/course_web.jpg",
+      "language": "English"
+    },
+    {
+      "id": "web-fcc-responsive",
+      "title": "Responsive Web Design Certification",
+      "provider": "freeCodeCamp",
+      "url": "https://www.freecodecamp.org/learn/2022/responsive-web-design/",
+      "subject": "Web Development",
+      "level": "Beginner",
+      "duration": "6 weeks (5 hrs/wk)",
+      "coursePrice": "Free",
+      "isCourseFree": true,
+      "certificatePrice": "Free (Free verified digital certificate)",
+      "certificateStatus": "course-completion",
+      "practiceLinks": [
+        {
+          "title": "freeCodeCamp In-Browser Code Sandbox",
+          "url": "https://www.freecodecamp.org/learn/2022/responsive-web-design/",
+          "type": "sandbox",
+          "description": "Instant test-driven feedback on CSS Flexbox and Grid"
+        }
+      ],
+      "source": "freeCodeCamp Curriculum Catalog",
+      "lastVerified": "2025-03-15",
+      "isVerified": true,
+      "isFeatured": true,
+      "auditTip": "Every lesson and certification project is permanently free.",
+      "description": "Master modern HTML5, semantic elements, CSS3 variables, Flexbox, CSS Grid, and media queries.",
+      "tags": [
+        "HTML5",
+        "CSS3",
+        "Flexbox",
+        "Grid",
+        "Free Certificate"
+      ],
+      "image": "/assets/courses/course_web.jpg",
+      "language": "English"
+    },
+    {
+      "id": "dm-google-digital",
+      "title": "Google Digital Marketing & E-commerce Certificate",
+      "provider": "Google / Coursera",
+      "url": "https://grow.google/certificates/digital-marketing-ecommerce/",
+      "subject": "Digital Marketing",
+      "level": "Beginner",
+      "duration": "8 weeks (6 hrs/wk)",
+      "coursePrice": "Free to Audit",
+      "isCourseFree": true,
+      "certificatePrice": "$39/mo Coursera subscription or financial aid",
+      "certificateStatus": "industry-recognized",
+      "practiceLinks": [
+        {
+          "title": "Google Ads & Analytics Demo Account",
+          "url": "https://support.google.com/analytics/answer/6367342",
+          "type": "sandbox",
+          "description": "Access real Google Analytics 4 enterprise ecommerce datasets"
+        }
+      ],
+      "source": "Grow with Google / Coursera",
+      "lastVerified": "2025-03-16",
+      "isVerified": true,
+      "isFeatured": true,
+      "auditTip": "Individual course modules can be audited for free without paying the monthly subscription.",
+      "description": "Build foundational skills in email marketing, marketing automation, SEO, Google Analytics, and Shopify store management.",
+      "tags": [
+        "SEO",
+        "Google Analytics",
+        "Ecommerce",
+        "Shopify",
+        "Industry Credential"
+      ],
+      "image": "/assets/courses/course_mkt.jpg",
+      "language": "English"
+    },
+    {
+      "id": "dm-hubspot-inbound",
+      "title": "HubSpot Inbound Marketing Certification",
+      "provider": "HubSpot Academy",
+      "url": "https://academy.hubspot.com/courses/inbound-marketing",
+      "subject": "Digital Marketing",
+      "level": "Beginner to Intermediate",
+      "duration": "4 weeks (3 hrs/wk)",
+      "coursePrice": "Free",
+      "isCourseFree": true,
+      "certificatePrice": "Free (Globally recognized badge for LinkedIn)",
+      "certificateStatus": "industry-recognized",
+      "practiceLinks": [
+        {
+          "title": "HubSpot Free CRM Sandbox",
+          "url": "https://www.hubspot.com/products/crm",
+          "type": "sandbox",
+          "description": "Practice setting up lead nurturing workflows and blog funnels"
+        }
+      ],
+      "source": "HubSpot Academy Public Course Catalog",
+      "lastVerified": "2025-03-16",
+      "isVerified": true,
+      "isFeatured": true,
+      "auditTip": "The course and official certification exam are 100% free with no credit card required.",
+      "description": "Learn content marketing, lead generation, buyer personas, conversational marketing, and customer delight strategies.",
+      "tags": [
+        "Inbound",
+        "CRM",
+        "Lead Gen",
+        "Free Certificate",
+        "HubSpot"
+      ],
+      "image": "/assets/courses/course_mkt.jpg",
+      "language": "English"
+    },
+    {
+      "id": "ux-google-design",
+      "title": "Google UX Design Professional Certificate",
+      "provider": "Google / Coursera",
+      "url": "https://grow.google/certificates/ux-design/",
+      "subject": "UI/UX",
+      "level": "Beginner",
+      "duration": "6 months (10 hrs/wk) or 8-10 weeks intensive",
+      "coursePrice": "Free to Audit",
+      "isCourseFree": true,
+      "certificatePrice": "$39/mo Coursera subscription or financial aid",
+      "certificateStatus": "industry-recognized",
+      "practiceLinks": [
+        {
+          "title": "Figma Community Design Challenges",
+          "url": "https://www.figma.com/community",
+          "type": "sandbox",
+          "description": "Wireframing, UI kits, design systems, and clickable prototypes"
+        }
+      ],
+      "source": "Grow with Google / Coursera",
+      "lastVerified": "2025-03-14",
+      "isVerified": true,
+      "isFeatured": true,
+      "auditTip": "Audit each module individually at $0 to access video instructions, portfolio rubrics, and reading material.",
+      "description": "Empathize with users, define pain points, ideate solutions, create wireframes and high-fidelity prototypes in Figma, and conduct usability tests.",
+      "tags": [
+        "Figma",
+        "Wireframing",
+        "User Research",
+        "Prototyping",
+        "Industry Credential"
+      ],
+      "image": "/assets/courses/course_ux.jpg",
+      "language": "English"
+    },
+    {
+      "id": "ux-coursera-calarts",
+      "title": "UI / UX Design Specialization",
+      "provider": "CalArts / Coursera",
+      "url": "https://www.coursera.org/specializations/ui-ux-design",
+      "subject": "UI/UX",
+      "level": "Beginner to Intermediate",
+      "duration": "6 weeks (4-6 hrs/wk)",
+      "coursePrice": "Free to Audit",
+      "isCourseFree": true,
+      "certificatePrice": "$49/mo subscription",
+      "certificateStatus": "course-completion",
+      "practiceLinks": [
+        {
+          "title": "CalArts Visual Design Briefs",
+          "url": "https://www.coursera.org/specializations/ui-ux-design",
+          "type": "project",
+          "description": "Typography, graphic design rules, and mobile interaction mockups"
+        }
+      ],
+      "source": "California Institute of the Arts / Coursera",
+      "lastVerified": "2025-03-10",
+      "isVerified": true,
+      "isFeatured": false,
+      "auditTip": "Audit any of the 4 included courses for free to learn core visual design foundations.",
+      "description": "Visual elements of UI design, typography, structure, color theory, and web interface wireframing.",
+      "tags": [
+        "Visual Design",
+        "Typography",
+        "Interface Design",
+        "CalArts"
+      ],
+      "image": "/assets/courses/course_ux.jpg",
+      "language": "English"
+    },
+    {
+      "id": "lang-spanish-fsi",
+      "title": "FSI Conversational Spanish Fast-Track",
+      "provider": "Foreign Service Institute / Open Culture",
+      "url": "https://www.openculture.com/foreign_service_institute_spanish",
+      "subject": "Conversational Spanish",
+      "level": "Beginner to Intermediate",
+      "duration": "12 weeks (5 hrs/wk)",
+      "coursePrice": "Free",
+      "isCourseFree": true,
+      "certificatePrice": "None (Public domain open educational resource)",
+      "certificateStatus": "none",
+      "practiceLinks": [
+        {
+          "title": "Language Transfer Spanish Audio Drills",
+          "url": "https://www.languagetransfer.org/free-courses-1#complete-spanish",
+          "type": "audio",
+          "description": "90 interactive thinking-method audio lessons with pronunciation drills"
+        },
+        {
+          "title": "Tandem / HelloTalk Language Exchange",
+          "url": "https://www.tandem.net/",
+          "type": "practice",
+          "description": "Free native speaker conversational partner matching"
+        }
+      ],
+      "source": "U.S. Foreign Service Institute / Public Domain Archive",
+      "lastVerified": "2025-03-12",
+      "isVerified": true,
+      "isFeatured": true,
+      "auditTip": "Completely free open educational audio courses produced for diplomats and accelerated learners.",
+      "description": "Intensive auditory drill program focused on sentence formation, phonetic accuracy, and conversational survival dialogues.",
+      "tags": [
+        "Spanish",
+        "Audio Drills",
+        "Pronunciation",
+        "100% Free",
+        "Public Domain"
+      ],
+      "image": "/assets/courses/course_spanish.svg",
+      "language": "Spanish & English"
+    },
+    {
+      "id": "lang-french-fsi",
+      "title": "FSI Conversational French & Phonetics",
+      "provider": "Foreign Service Institute / Open Culture",
+      "url": "https://www.openculture.com/foreign_service_institute_french",
+      "subject": "Conversational French",
+      "level": "Beginner to Intermediate",
+      "duration": "12 weeks (5 hrs/wk)",
+      "coursePrice": "Free",
+      "isCourseFree": true,
+      "certificatePrice": "None (Public domain government language materials)",
+      "certificateStatus": "none",
+      "practiceLinks": [
+        {
+          "title": "TV5Monde Apprendre le Français",
+          "url": "https://apprendre.tv5monde.com/fr",
+          "type": "interactive",
+          "description": "Official video dialogues with A1/A2 listening comprehension exercises"
+        },
+        {
+          "title": "Language Transfer French Foundations",
+          "url": "https://www.languagetransfer.org/free-courses-1#french",
+          "type": "audio",
+          "description": "Thinking method audio sessions focusing on structural similarities to English"
+        }
+      ],
+      "source": "U.S. FSI / TV5Monde Open Access",
+      "lastVerified": "2025-03-15",
+      "isVerified": true,
+      "isFeatured": true,
+      "auditTip": "High-speed conversational audio and cultural dialogue transcripts available free without registration.",
+      "description": "High-yield conversational French curriculum targeting pronunciation nuances, essential tenses, and situational vocabulary.",
+      "tags": [
+        "French",
+        "Listening Practice",
+        "Situational Dialogues",
+        "100% Free"
+      ],
+      "image": "/assets/courses/course_spanish.svg",
+      "language": "French & English"
+    },
+    {
+      "id": "sample-aws-cloud",
+      "title": "AWS Cloud Practitioner Essentials [Sample Listing]",
+      "provider": "Amazon Web Services / AWS Skill Builder",
+      "url": "https://explore.skillbuilder.aws/learn/course/external/view/elearning/134/aws-cloud-practitioner-essentials",
+      "subject": "Cloud Computing",
+      "level": "Beginner",
+      "duration": "6 hours total self-paced",
+      "coursePrice": "Free",
+      "isCourseFree": true,
+      "certificatePrice": "$100 official proctored Pearson VUE certification exam voucher",
+      "certificateStatus": "industry-recognized",
+      "practiceLinks": [
+        {
+          "title": "AWS Free Tier Hands-on Sandbox",
+          "url": "https://aws.amazon.com/free/",
+          "type": "sandbox",
+          "description": "12 months free access to EC2, S3, and RDS micro instances"
+        }
+      ],
+      "source": "AWS Skill Builder Public Catalog",
+      "lastVerified": "2025-03-01",
+      "isVerified": false,
+      "isFeatured": false,
+      "auditTip": "AWS digital course is free; official proctored exam voucher is separate and optional.",
+      "description": "[Sample Listing - For Demonstration] Fundamental understanding of AWS Cloud concepts, security, architecture, pricing, and support.",
+      "tags": [
+        "AWS",
+        "Cloud",
+        "Sample Listing",
+        "Industry Exam"
+      ],
+      "image": "/assets/courses/course_data.jpg",
+      "language": "English"
+    },
+    {
+      "id": "cs-cs50x",
+      "title": "CS50x: Introduction to Computer Science",
+      "provider": "Harvard University / edX",
+      "url": "https://cs50.harvard.edu/x/",
+      "subject": "Computer Science",
+      "level": "Beginner",
+      "duration": "12 weeks (6-18 hrs/wk, self-paced)",
+      "coursePrice": "Free",
+      "isCourseFree": true,
+      "certificatePrice": "$200 (optional edX verified cert, or free Harvard-issued cert upon 70%+ score)",
+      "certificateStatus": "course-completion",
+      "practiceLinks": [
+        {
+          "title": "CS50x Problem Sets & Check50",
+          "url": "https://cs50.harvard.edu/x/psets/",
+          "type": "terminal",
+          "description": "Automated grading for C, Python, SQL, and JavaScript problem sets"
+        }
+      ],
+      "source": "Harvard Online / edX Catalog",
+      "lastVerified": "2025-09-01",
+      "isVerified": true,
+      "isFeatured": true,
+      "auditTip": "All lectures, problem sets, and the auto-grader are 100% free directly on the CS50 portal - no edX purchase required.",
+      "description": "Harvard's introduction to the intellectual enterprises of computer science: abstraction, algorithms, data structures, encapsulation, and security across C, Python, SQL, and JavaScript.",
+      "tags": [
+        "Computer Science",
+        "C",
+        "Algorithms",
+        "Free Course",
+        "Harvard"
+      ],
+      "image": "/assets/courses/course_python.jpg",
+      "language": "English"
+    },
+    {
+      "id": "sec-google-cyber",
+      "title": "Google Cybersecurity Professional Certificate",
+      "provider": "Google / Coursera",
+      "url": "https://grow.google/certificates/cybersecurity/",
+      "subject": "Cybersecurity",
+      "level": "Beginner",
+      "duration": "6 months (10 hrs/wk) or 8-10 weeks intensive",
+      "coursePrice": "Free to Audit",
+      "isCourseFree": true,
+      "certificatePrice": "$39/mo Coursera subscription or financial aid",
+      "certificateStatus": "industry-recognized",
+      "practiceLinks": [
+        {
+          "title": "TryHackMe Free Rooms",
+          "url": "https://tryhackme.com/",
+          "type": "sandbox",
+          "description": "Free beginner-friendly hands-on security labs and CTF-style challenges"
+        }
+      ],
+      "source": "Grow with Google / Coursera",
+      "lastVerified": "2025-09-01",
+      "isVerified": true,
+      "isFeatured": true,
+      "auditTip": "Audit each module individually at $0 to access videos, labs, and reading material without the subscription.",
+      "description": "Learn to identify risks, threats, and vulnerabilities, use SIEM tools, Python, and Linux to detect and respond to security incidents.",
+      "tags": [
+        "Cybersecurity",
+        "SIEM",
+        "Linux",
+        "Industry Credential",
+        "Google"
+      ],
+      "image": "/assets/courses/course_data.jpg",
+      "language": "English"
+    },
+    {
+      "id": "ml-kaggle-intro",
+      "title": "Intro to Machine Learning",
+      "provider": "Kaggle Learn",
+      "url": "https://www.kaggle.com/learn/intro-to-machine-learning",
+      "subject": "Machine Learning",
+      "level": "Beginner",
+      "duration": "3 hours self-paced",
+      "coursePrice": "Free",
+      "isCourseFree": true,
+      "certificatePrice": "Free (Kaggle completion certificate)",
+      "certificateStatus": "course-completion",
+      "practiceLinks": [
+        {
+          "title": "Kaggle In-Browser Notebooks",
+          "url": "https://www.kaggle.com/learn/intro-to-machine-learning",
+          "type": "notebook",
+          "description": "Hands-on exercises using real datasets directly in the browser, no setup required"
+        }
+      ],
+      "source": "Kaggle Learn Open Curriculum",
+      "lastVerified": "2025-09-01",
+      "isVerified": true,
+      "isFeatured": false,
+      "auditTip": "100% free, no account paywall; the completion certificate is issued at no cost.",
+      "description": "Build your first decision tree and random forest models, understand underfitting/overfitting, and validate model accuracy on real datasets.",
+      "tags": [
+        "Machine Learning",
+        "Python",
+        "100% Free",
+        "Kaggle"
+      ],
+      "image": "/assets/courses/course_data.jpg",
+      "language": "English"
+    },
+    {
+      "id": "ml-fcc-python",
+      "title": "Machine Learning with Python Certification",
+      "provider": "freeCodeCamp",
+      "url": "https://www.freecodecamp.org/learn/machine-learning-with-python/",
+      "subject": "Machine Learning",
+      "level": "Intermediate",
+      "duration": "8 weeks (6 hrs/wk)",
+      "coursePrice": "Free",
+      "isCourseFree": true,
+      "certificatePrice": "Free (100% free verified credential upon 5 project submissions)",
+      "certificateStatus": "course-completion",
+      "practiceLinks": [
+        {
+          "title": "freeCodeCamp TensorFlow Project Sandbox",
+          "url": "https://www.freecodecamp.org/learn/machine-learning-with-python/",
+          "type": "sandbox",
+          "description": "In-browser Google Colab projects covering neural networks and TensorFlow"
+        }
+      ],
+      "source": "freeCodeCamp Open Curriculum",
+      "lastVerified": "2025-09-01",
+      "isVerified": true,
+      "isFeatured": false,
+      "auditTip": "Entire curriculum and certificate are permanently free with no subscription tier.",
+      "description": "Learn the fundamentals of neural networks, TensorFlow, and machine learning by completing five real applied projects.",
+      "tags": [
+        "Machine Learning",
+        "TensorFlow",
+        "Python",
+        "Free Certificate"
+      ],
+      "image": "/assets/courses/course_data.jpg",
+      "language": "English"
+    },
+    {
+      "id": "web-meta-frontend",
+      "title": "Meta Front-End Developer Professional Certificate",
+      "provider": "Meta / Coursera",
+      "url": "https://www.coursera.org/professional-certificates/meta-front-end-developer",
+      "subject": "Web Development",
+      "level": "Beginner",
+      "duration": "7 months (10 hrs/wk) or 10-12 weeks intensive",
+      "coursePrice": "Free to Audit",
+      "isCourseFree": true,
+      "certificatePrice": "$49/mo Coursera subscription or financial aid",
+      "certificateStatus": "industry-recognized",
+      "practiceLinks": [
+        {
+          "title": "React Official Interactive Tutorial",
+          "url": "https://react.dev/learn",
+          "type": "sandbox",
+          "description": "Free official React fundamentals with in-browser exercises"
+        }
+      ],
+      "source": "Meta Career Certificates / Coursera",
+      "lastVerified": "2025-09-01",
+      "isVerified": true,
+      "isFeatured": false,
+      "auditTip": "Audit each course of the series individually at $0 to access all videos and labs before paying for the certificate.",
+      "description": "Build responsive websites and web applications with HTML, CSS, JavaScript, React, and version control, taught by Meta engineers.",
+      "tags": [
+        "React",
+        "JavaScript",
+        "Industry Credential",
+        "Meta"
+      ],
+      "image": "/assets/courses/course_web.jpg",
+      "language": "English"
+    },
+    {
+      "id": "py-udemy-100days",
+      "title": "100 Days of Code: The Complete Python Pro Bootcamp",
+      "provider": "Udemy (Dr. Angela Yu)",
+      "url": "https://www.udemy.com/course/100-days-of-code/",
+      "subject": "Python",
+      "level": "Beginner to Advanced",
+      "duration": "100 days (1-2 hrs/day self-paced)",
+      "coursePrice": "$12.99-$84.99 (frequent Udemy sales; lifetime access, no subscription)",
+      "isCourseFree": false,
+      "certificatePrice": "Included (Udemy Certificate of Completion, not accredited)",
+      "certificateStatus": "course-completion",
+      "practiceLinks": [
+        {
+          "title": "100 Days of Code GitHub Starter Files",
+          "url": "https://github.com/appbrewery/100-days-of-code",
+          "type": "repo",
+          "description": "Official daily project starter files and solutions repository"
+        }
+      ],
+      "source": "Udemy Course Catalog",
+      "lastVerified": "2025-09-01",
+      "isVerified": true,
+      "isFeatured": false,
+      "auditTip": "Wait for a Udemy sale (very frequent) to pay closer to $12.99 instead of the $84.99 list price; a one-time payment gives lifetime access.",
+      "description": "A project-based, one-time-purchase bootcamp covering Python fundamentals through automation, web scraping, Flask, and data science across 100 daily projects.",
+      "tags": [
+        "Python",
+        "Paid Course",
+        "One-Time Purchase",
+        "Udemy"
+      ],
+      "image": "/assets/courses/course_python.jpg",
+      "language": "English"
+    },
+    {
+      "id": "web-udemy-bootcamp",
+      "title": "The Complete Web Development Bootcamp",
+      "provider": "Udemy (Dr. Angela Yu)",
+      "url": "https://www.udemy.com/course/the-complete-web-development-bootcamp/",
+      "subject": "Web Development",
+      "level": "Beginner to Advanced",
+      "duration": "65+ hours self-paced",
+      "coursePrice": "$13.99-$84.99 (frequent Udemy sales; lifetime access, no subscription)",
+      "isCourseFree": false,
+      "certificatePrice": "Included (Udemy Certificate of Completion, not accredited)",
+      "certificateStatus": "course-completion",
+      "practiceLinks": [
+        {
+          "title": "Course GitHub Starter Files",
+          "url": "https://github.com/appbrewery/Frontend-Web-Development-Bootcamp",
+          "type": "repo",
+          "description": "Official starter files and project solutions repository"
+        }
+      ],
+      "source": "Udemy Course Catalog",
+      "lastVerified": "2025-09-01",
+      "isVerified": true,
+      "isFeatured": false,
+      "auditTip": "Wait for a Udemy sale (very frequent) to pay closer to $13.99 instead of the $84.99 list price; a one-time payment gives lifetime access.",
+      "description": "A single-purchase full-stack bootcamp covering HTML, CSS, JavaScript, Node.js, Express, MongoDB, React, and deployment.",
+      "tags": [
+        "Web Development",
+        "Node.js",
+        "Paid Course",
+        "One-Time Purchase",
+        "Udemy"
+      ],
+      "image": "/assets/courses/course_web.jpg",
+      "language": "English"
+    },
+    {
+      "id": "it-comptia-aplus",
+      "title": "CompTIA A+ Certification",
+      "provider": "CompTIA",
+      "url": "https://www.comptia.org/certifications/a",
+      "subject": "IT Support",
+      "level": "Beginner",
+      "duration": "8-12 weeks self-study",
+      "coursePrice": "Study guides widely available at no cost; certification requires paid exams",
+      "isCourseFree": false,
+      "certificatePrice": "$253 per exam (Core 1 + Core 2 both required, ~$506 total)",
+      "certificateStatus": "industry-recognized",
+      "practiceLinks": [
+        {
+          "title": "CompTIA CertMaster Free Practice Questions",
+          "url": "https://www.comptia.org/training/resources/comptia-certmaster-practice",
+          "type": "practice",
+          "description": "Sample practice questions to gauge exam readiness before purchasing"
+        }
+      ],
+      "source": "CompTIA Official Certification Catalog",
+      "lastVerified": "2025-09-01",
+      "isVerified": true,
+      "isFeatured": false,
+      "auditTip": "Free study guides and practice questions exist widely; only the two proctored exam vouchers are paid and mandatory.",
+      "description": "The industry-standard entry-level IT certification validating hardware, networking, mobile devices, security, and troubleshooting skills.",
+      "tags": [
+        "IT Support",
+        "Hardware",
+        "Industry Certification",
+        "Paid Exam"
+      ],
+      "image": "/assets/courses/course_data.jpg",
+      "language": "English"
+    },
+    {
+      "id": "cloud-aws-saa",
+      "title": "AWS Certified Solutions Architect - Associate",
+      "provider": "Amazon Web Services",
+      "url": "https://aws.amazon.com/certification/certified-solutions-architect-associate/",
+      "subject": "Cloud Computing",
+      "level": "Intermediate",
+      "duration": "6-10 weeks self-study",
+      "coursePrice": "Study resources widely available at no cost; certification requires a paid exam",
+      "isCourseFree": false,
+      "certificatePrice": "$150 proctored Pearson VUE exam voucher",
+      "certificateStatus": "industry-recognized",
+      "practiceLinks": [
+        {
+          "title": "AWS Free Tier Hands-on Sandbox",
+          "url": "https://aws.amazon.com/free/",
+          "type": "sandbox",
+          "description": "12 months free access to EC2, S3, and RDS micro instances for exam-aligned practice"
+        }
+      ],
+      "source": "AWS Certification Official Catalog",
+      "lastVerified": "2025-09-01",
+      "isVerified": true,
+      "isFeatured": false,
+      "auditTip": "AWS Skill Builder offers free digital training toward this exam; only the proctored exam itself is paid.",
+      "description": "Validates the ability to design distributed systems on AWS, covering compute, storage, networking, and security best practices.",
+      "tags": [
+        "AWS",
+        "Cloud",
+        "Industry Certification",
+        "Paid Exam"
+      ],
+      "image": "/assets/courses/course_data.jpg",
+      "language": "English"
+    },
+    {
+      "id": "pm-scrum-psm1",
+      "title": "Professional Scrum Master I (PSM I)",
+      "provider": "Scrum.org",
+      "url": "https://www.scrum.org/professional-scrum-master-i-certification-assessment",
+      "subject": "Project Management",
+      "level": "Beginner to Intermediate",
+      "duration": "2-4 weeks self-study",
+      "coursePrice": "Study resources available at no cost; certification requires a paid exam",
+      "isCourseFree": false,
+      "certificatePrice": "$200 online assessment fee",
+      "certificateStatus": "industry-recognized",
+      "practiceLinks": [
+        {
+          "title": "Scrum.org Open Assessments (Free)",
+          "url": "https://www.scrum.org/open-assessments",
+          "type": "practice",
+          "description": "Free practice assessments covering the Scrum Guide before attempting the paid exam"
+        }
+      ],
+      "source": "Scrum.org Official Certification Catalog",
+      "lastVerified": "2025-09-01",
+      "isVerified": true,
+      "isFeatured": false,
+      "auditTip": "The Scrum Guide and Open Assessments are free; only the official 60-question timed assessment is paid.",
+      "description": "A globally recognized credential validating fundamental knowledge of Scrum as described in the Scrum Guide, widely requested for agile project/product roles.",
+      "tags": [
+        "Agile",
+        "Scrum",
+        "Project Management",
+        "Paid Exam"
+      ],
+      "image": "/assets/courses/course_mkt.jpg",
+      "language": "English"
+    },
+    {
+      "id": "cloud-ms-az900",
+      "title": "Microsoft Certified: Azure Fundamentals (AZ-900)",
+      "provider": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/",
+      "subject": "Cloud Computing",
+      "level": "Beginner",
+      "duration": "4-6 weeks self-study",
+      "coursePrice": "Free (Microsoft Learn training modules)",
+      "isCourseFree": true,
+      "certificatePrice": "$99 proctored Pearson VUE exam voucher (optional - training itself is free)",
+      "certificateStatus": "industry-recognized",
+      "practiceLinks": [
+        {
+          "title": "Microsoft Learn: Azure Fundamentals Path",
+          "url": "https://learn.microsoft.com/en-us/training/paths/azure-fundamentals/",
+          "type": "sandbox",
+          "description": "Free interactive training modules with an Azure sandbox included"
+        }
+      ],
+      "source": "Microsoft Learn Official Catalog",
+      "lastVerified": "2025-09-01",
+      "isVerified": true,
+      "isFeatured": false,
+      "auditTip": "All training content and the Azure sandbox are 100% free; only the optional certification exam has a fee.",
+      "description": "An entry-level credential covering core cloud concepts, Azure services, pricing, and governance - a common first step into cloud computing.",
+      "tags": [
+        "Azure",
+        "Cloud",
+        "Microsoft",
+        "Industry Certification"
+      ],
+      "image": "/assets/courses/course_data.jpg",
+      "language": "English"
+    }
+  ],
+  "learningPaths": [
+    {
+      "id": "path-data-analytics",
+      "slug": "data-analytics-pro",
+      "title": "Junior Data Analyst to Certified Pro",
+      "headline": "Transform raw numbers into actionable business insights with SQL, spreadsheets, and Tableau.",
+      "category": "Data Analysis",
+      "level": "Beginner-friendly",
+      "durationWeeks": 10,
+      "hoursPerWeek": 8,
+      "costTier": "$0 - $49",
+      "savingsEstimate": "$411 saved using audited tracks & open-source sandboxes",
+      "certificateType": "Industry-Recognized",
+      "rating": 4.9,
+      "reviewCount": 1842,
+      "targetCredentials": [
+        {
+          "title": "Google Data Analytics Professional Certificate",
+          "provider": "Google",
+          "type": "Industry Credential",
+          "badge": "verified"
+        },
+        {
+          "title": "CompTIA Data+ (Aligned)",
+          "provider": "CompTIA",
+          "type": "Standardized Exam",
+          "badge": "military_tech"
+        }
+      ],
+      "milestones": [
+        {
+          "stage": 1,
+          "status": "completed",
+          "title": "Foundations of Data & Spreadsheets",
+          "durationHours": 12,
+          "score": "95%",
+          "description": "Data hygiene, formulas, VLOOKUP, pivot tables, and structured data analysis.",
+          "type": "foundation",
+          "primaryResource": {
+            "title": "Google Data Analytics: Foundations",
+            "provider": "Coursera",
+            "url": "https://www.coursera.org/learn/data-preparation",
+            "cost": "Free to Audit ($0)",
+            "retailCost": "$39/mo"
+          },
+          "freeAlternative": {
+            "title": "Khan Academy Statistics & Probability",
+            "url": "https://www.khanacademy.org/math/statistics-probability",
+            "provider": "Khan Academy"
+          },
+          "practiceArena": {
+            "title": "Spreadsheet Simulation Drills",
+            "type": "interactive",
+            "solved": "12/12 exercises completed"
+          },
+          "tasks": [
+            {
+              "id": "t1",
+              "title": "Understand the Data Life Cycle & Ecosystem",
+              "completed": true
+            },
+            {
+              "id": "t2",
+              "title": "Master Pivot Tables & Conditional Formatting",
+              "completed": true
+            },
+            {
+              "id": "t3",
+              "title": "Audit Data Integrity & Outlier Identification",
+              "completed": true
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "status": "in-progress",
+          "title": "SQL & Relational Database Mastery",
+          "durationHours": 18,
+          "progressPercent": 65,
+          "dueLabel": "Due Sunday",
+          "description": "Multi-table joins, subqueries, grouping, aggregate functions, and window calculations.",
+          "type": "core",
+          "primaryResource": {
+            "title": "Google Data Analytics: Process Data with SQL",
+            "provider": "Coursera",
+            "url": "https://www.coursera.org/learn/process-data",
+            "cost": "Free to Audit ($0)",
+            "retailCost": "$39/mo"
+          },
+          "freeAlternative": {
+            "title": "freeCodeCamp Relational Database Curriculum",
+            "url": "https://www.freecodecamp.org/learn/relational-database/",
+            "provider": "freeCodeCamp"
+          },
+          "practiceArena": {
+            "title": "LeetCode Top 50 SQL Study Plan",
+            "type": "terminal",
+            "solved": "16/50 solved",
+            "challengeUrl": "https://leetcode.com/studyplan/top-sql-50/"
+          },
+          "tasks": [
+            {
+              "id": "t4",
+              "title": "Filter & Group Data with WHERE, HAVING, GROUP BY",
+              "completed": true
+            },
+            {
+              "id": "t5",
+              "title": "Master INNER, LEFT, RIGHT, and FULL OUTER JOINs",
+              "completed": true
+            },
+            {
+              "id": "t6",
+              "title": "Complex Window Functions (ROW_NUMBER, RANK, DENSE_RANK)",
+              "completed": false
+            },
+            {
+              "id": "t7",
+              "title": "Complete BigQuery Real-World Scenario Drill",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "status": "locked",
+          "title": "Python for Data Exploration (Pandas & NumPy)",
+          "durationHours": 14,
+          "description": "Importing datasets, vectorization, data cleaning, and filtering with Pandas DataFrames.",
+          "type": "core",
+          "primaryResource": {
+            "title": "Kaggle Learn: Python & Pandas",
+            "provider": "Kaggle",
+            "url": "https://www.kaggle.com/learn/pandas",
+            "cost": "100% Free ($0)",
+            "retailCost": "$0"
+          },
+          "freeAlternative": {
+            "title": "Harvard CS50P Open Modules",
+            "url": "https://cs50.harvard.edu/python/",
+            "provider": "Harvard Online"
+          },
+          "practiceArena": {
+            "title": "Kaggle E-Commerce Customer Trends Sandbox",
+            "type": "notebook",
+            "solved": "Locked - Unlocks after Milestone 2",
+            "challengeUrl": "https://www.kaggle.com/datasets"
+          },
+          "tasks": [
+            {
+              "id": "t8",
+              "title": "Import CSVs and Handle Missing Values with Pandas",
+              "completed": false
+            },
+            {
+              "id": "t9",
+              "title": "Groupby and Pivot Operations in Python",
+              "completed": false
+            },
+            {
+              "id": "t10",
+              "title": "Publish Exploratory Data Analysis Notebook to GitHub",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "stage": 4,
+          "status": "locked",
+          "title": "Data Visualization & Storytelling (Tableau Public)",
+          "durationHours": 10,
+          "description": "Visual encoding principles, dashboard layout, interactivity, and stakeholder presentation.",
+          "type": "portfolio",
+          "primaryResource": {
+            "title": "Google Data Analytics: Share Data Through the Art of Visualization",
+            "provider": "Coursera",
+            "url": "https://www.coursera.org/learn/visualize-data",
+            "cost": "Free to Audit ($0)",
+            "retailCost": "$39/mo"
+          },
+          "freeAlternative": {
+            "title": "Tableau Public Free Training Videos",
+            "url": "https://www.tableau.com/learn/training",
+            "provider": "Tableau Public"
+          },
+          "practiceArena": {
+            "title": "Public Health Interactive Dashboard",
+            "type": "portfolio",
+            "solved": "Portfolio Artifact Blueprint",
+            "challengeUrl": "https://public.tableau.com/"
+          },
+          "tasks": [
+            {
+              "id": "t11",
+              "title": "Build Multi-Chart Interactive Tableau Dashboard",
+              "completed": false
+            },
+            {
+              "id": "t12",
+              "title": "Publish Live Interactive Project to Tableau Public",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "stage": 5,
+          "status": "locked",
+          "title": "Capstone Case Study & Industry Credential Validation",
+          "durationHours": 16,
+          "description": "End-to-end case study defense, portfolio documentation, and Google Professional Certificate completion.",
+          "type": "credential",
+          "primaryResource": {
+            "title": "Google Data Analytics Capstone: Complete a Case Study",
+            "provider": "Google / Coursera",
+            "url": "https://www.coursera.org/learn/google-data-analytics-capstone",
+            "cost": "$39 (or 7-day free trial to submit final grade)",
+            "retailCost": "$39/mo"
+          },
+          "freeAlternative": {
+            "title": "Open Source GitHub Data Portfolio Defense",
+            "url": "https://github.com/",
+            "provider": "GitHub"
+          },
+          "practiceArena": {
+            "title": "Simulated Technical Interview Screening",
+            "type": "mock-exam",
+            "solved": "25 Timed Scenario Questions",
+            "challengeUrl": "#"
+          },
+          "tasks": [
+            {
+              "id": "t13",
+              "title": "Publish Full GitHub Repository with README & Data Analysis",
+              "completed": false
+            },
+            {
+              "id": "t14",
+              "title": "Verify Digital Certificate Credential on LinkedIn",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "path-python-automation",
+      "slug": "python-software-automation",
+      "title": "Python for Automation & Software",
+      "headline": "Go from basic syntax to scripting automated bots, scraping APIs, and building command-line utilities.",
+      "category": "Python",
+      "level": "Beginner",
+      "durationWeeks": 8,
+      "hoursPerWeek": 6,
+      "costTier": "$0 Free",
+      "savingsEstimate": "$350 saved using open courseware & public auto-graders",
+      "certificateType": "Course Certificate",
+      "rating": 4.8,
+      "reviewCount": 1420,
+      "targetCredentials": [
+        {
+          "title": "CS50P Harvard Certificate of Completion",
+          "provider": "Harvard Online",
+          "type": "Institutional Certificate",
+          "badge": "school"
+        }
+      ],
+      "milestones": [
+        {
+          "stage": 1,
+          "status": "completed",
+          "title": "Python Basics: Variables, Conditionals & Loops",
+          "durationHours": 10,
+          "score": "100%",
+          "description": "Syntax fundamentals, operators, conditional branching, and iteration.",
+          "type": "foundation",
+          "primaryResource": {
+            "title": "CS50's Introduction to Programming with Python (Weeks 0-2)",
+            "provider": "Harvard Online",
+            "url": "https://cs50.harvard.edu/python/",
+            "cost": "100% Free ($0)",
+            "retailCost": "$299 (Optional edX)"
+          },
+          "freeAlternative": {
+            "title": "Python for Everybody (Chapters 1-5)",
+            "url": "https://www.py4e.com/",
+            "provider": "PY4E"
+          },
+          "practiceArena": {
+            "title": "Check50 Automated Command Line Grading",
+            "type": "terminal",
+            "solved": "All 6 problem sets passed"
+          },
+          "tasks": [
+            {
+              "id": "py-t1",
+              "title": "Conditionals and Logic in Python",
+              "completed": true
+            },
+            {
+              "id": "py-t2",
+              "title": "Loops and Iterators",
+              "completed": true
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "status": "in-progress",
+          "title": "Functions, Exceptions & Unit Testing",
+          "durationHours": 12,
+          "progressPercent": 40,
+          "dueLabel": "In Progress",
+          "description": "Pure functions, scope, custom exceptions, and pytest test-driven development.",
+          "type": "core",
+          "primaryResource": {
+            "title": "CS50P Unit Testing & Pytest Module",
+            "provider": "Harvard Online",
+            "url": "https://cs50.harvard.edu/python/",
+            "cost": "Free ($0)",
+            "retailCost": "$0"
+          },
+          "freeAlternative": {
+            "title": "Real Python Pytest Primer",
+            "url": "https://realpython.com/",
+            "provider": "Real Python"
+          },
+          "practiceArena": {
+            "title": "Pytest Test Suite Sandbox",
+            "type": "terminal",
+            "solved": "4/10 test files implemented"
+          },
+          "tasks": [
+            {
+              "id": "py-t3",
+              "title": "Write robust try/except error handlers",
+              "completed": true
+            },
+            {
+              "id": "py-t4",
+              "title": "Build test suite using pytest fixtures",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "status": "locked",
+          "title": "File I/O, Web APIs & JSON Automation",
+          "durationHours": 14,
+          "description": "Reading/writing CSV and JSON files, querying REST APIs with the requests library.",
+          "type": "core",
+          "primaryResource": {
+            "title": "Python for Everybody: Web Data & APIs",
+            "provider": "University of Michigan",
+            "url": "https://www.py4e.com/lessons",
+            "cost": "Free ($0)",
+            "retailCost": "$49/mo"
+          },
+          "freeAlternative": {
+            "title": "Automate the Boring Stuff with Python",
+            "url": "https://automatetheboringstuff.com/",
+            "provider": "Al Sweigart Open Creative Commons"
+          },
+          "practiceArena": {
+            "title": "GitHub API Downloader CLI",
+            "type": "terminal",
+            "solved": "Locked"
+          },
+          "tasks": [
+            {
+              "id": "py-t5",
+              "title": "Query public REST API and format JSON",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "stage": 4,
+          "status": "locked",
+          "title": "Final Portfolio CLI Tool & Packaging",
+          "durationHours": 12,
+          "description": "Package an interactive Python CLI tool with pip and deploy it to PyPI or GitHub.",
+          "type": "portfolio",
+          "primaryResource": {
+            "title": "CS50P Final Project Submission",
+            "provider": "Harvard Online",
+            "url": "https://cs50.harvard.edu/python/",
+            "cost": "Free ($0)",
+            "retailCost": "$0"
+          },
+          "freeAlternative": {
+            "title": "Packaging Python Projects Official Guide",
+            "url": "https://packaging.python.org/",
+            "provider": "Python Software Foundation"
+          },
+          "practiceArena": {
+            "title": "Terminal Automation Bot",
+            "type": "portfolio",
+            "solved": "Portfolio Artifact"
+          },
+          "tasks": [
+            {
+              "id": "py-t6",
+              "title": "Create PyPI compatible setup.py / pyproject.toml",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "path-web-dev",
+      "slug": "full-stack-web-foundations",
+      "title": "Full-Stack Web Foundations",
+      "headline": "Modern web development from semantic HTML & modern CSS to JavaScript ES6+ and Node.js backends.",
+      "category": "Web Development",
+      "level": "Beginner to Pro",
+      "durationWeeks": 14,
+      "hoursPerWeek": 9,
+      "costTier": "$0 - $49",
+      "savingsEstimate": "$600 saved compared to coding bootcamp fees",
+      "certificateType": "Industry-Recognized",
+      "rating": 4.9,
+      "reviewCount": 2190,
+      "targetCredentials": [
+        {
+          "title": "freeCodeCamp Full Stack Developer",
+          "provider": "freeCodeCamp",
+          "type": "Open Credential",
+          "badge": "verified"
+        },
+        {
+          "title": "Meta Front-End Developer Certificate",
+          "provider": "Meta",
+          "type": "Professional Certificate",
+          "badge": "layers"
+        }
+      ],
+      "milestones": [
+        {
+          "stage": 1,
+          "status": "completed",
+          "title": "Semantic HTML5 & Responsive CSS Architecture",
+          "durationHours": 20,
+          "score": "98%",
+          "description": "HTML semantics, accessibility (a11y), responsive layouts with Flexbox and CSS Grid.",
+          "type": "foundation",
+          "primaryResource": {
+            "title": "Responsive Web Design Certification",
+            "provider": "freeCodeCamp",
+            "url": "https://www.freecodecamp.org/learn/2022/responsive-web-design/",
+            "cost": "100% Free ($0)",
+            "retailCost": "$0"
+          },
+          "freeAlternative": {
+            "title": "The Odin Project: Foundations HTML & CSS",
+            "url": "https://www.theodinproject.com/paths/foundations/courses/foundations",
+            "provider": "The Odin Project"
+          },
+          "practiceArena": {
+            "title": "Responsive Landing Page & Accessible Form",
+            "type": "sandbox",
+            "solved": "Validated"
+          },
+          "tasks": [
+            {
+              "id": "w1",
+              "title": "Build a Responsive Product Landing Page",
+              "completed": true
+            },
+            {
+              "id": "w2",
+              "title": "Pass WCAG AA Color Contrast & Keyboard Navigation",
+              "completed": true
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "status": "in-progress",
+          "title": "JavaScript DOM & Asynchronous Programming",
+          "durationHours": 30,
+          "progressPercent": 50,
+          "dueLabel": "Active",
+          "description": "ES6+ syntax, DOM manipulation, Fetch API, Promises, and local storage state management.",
+          "type": "core",
+          "primaryResource": {
+            "title": "The Odin Project: JavaScript Course",
+            "provider": "The Odin Project",
+            "url": "https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript",
+            "cost": "Free ($0)",
+            "retailCost": "$0"
+          },
+          "freeAlternative": {
+            "title": "freeCodeCamp JavaScript Algorithms & Data Structures",
+            "url": "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/",
+            "provider": "freeCodeCamp"
+          },
+          "practiceArena": {
+            "title": "Interactive Weather & Task Management App",
+            "type": "sandbox",
+            "solved": "2/4 features complete"
+          },
+          "tasks": [
+            {
+              "id": "w3",
+              "title": "Handle asynchronous API calls with async/await",
+              "completed": true
+            },
+            {
+              "id": "w4",
+              "title": "Manage local browser state with localStorage",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "status": "locked",
+          "title": "Node.js, Express & RESTful APIs",
+          "durationHours": 25,
+          "description": "Server routing, middleware, REST architecture, CORS, and JSON responses.",
+          "type": "core",
+          "primaryResource": {
+            "title": "The Odin Project: NodeJS Course",
+            "provider": "The Odin Project",
+            "url": "https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs",
+            "cost": "Free ($0)",
+            "retailCost": "$0"
+          },
+          "freeAlternative": {
+            "title": "MDN Express Tutorial: Local Library",
+            "url": "https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs",
+            "provider": "MDN Web Docs"
+          },
+          "practiceArena": {
+            "title": "REST API Sandbox with Postman Tests",
+            "type": "terminal",
+            "solved": "Locked"
+          },
+          "tasks": [
+            {
+              "id": "w5",
+              "title": "Implement CRUD endpoints with error middleware",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "stage": 4,
+          "status": "locked",
+          "title": "Full-Stack Deployment & Portfolio Capstone",
+          "durationHours": 20,
+          "description": "Deploying full-stack applications with environment variables, security headers, and live CI/CD.",
+          "type": "portfolio",
+          "primaryResource": {
+            "title": "Full Stack Open (University of Helsinki)",
+            "provider": "University of Helsinki",
+            "url": "https://fullstackopen.com/en/",
+            "cost": "Free ($0)",
+            "retailCost": "$0"
+          },
+          "freeAlternative": {
+            "title": "The Odin Project Deployment Guide",
+            "url": "https://www.theodinproject.com/",
+            "provider": "The Odin Project"
+          },
+          "practiceArena": {
+            "title": "Full-Stack Application Deployment",
+            "type": "portfolio",
+            "solved": "Capstone Project"
+          },
+          "tasks": [
+            {
+              "id": "w6",
+              "title": "Deploy live web app with production database",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "path-ui-ux",
+      "slug": "ui-ux-design-fundamentals",
+      "title": "UI/UX Design Fundamentals",
+      "headline": "Design intuitive user experiences, master Figma components, and build a hireable 3-case-study portfolio.",
+      "category": "UI/UX",
+      "level": "All levels",
+      "durationWeeks": 6,
+      "hoursPerWeek": 5,
+      "costTier": "$0 - $29",
+      "savingsEstimate": "$320 saved utilizing community design systems",
+      "certificateType": "Course Certificate",
+      "rating": 4.9,
+      "reviewCount": 980,
+      "targetCredentials": [
+        {
+          "title": "Google UX Design Certificate (Audit Track)",
+          "provider": "Google",
+          "type": "Professional Certificate",
+          "badge": "palette"
+        }
+      ],
+      "milestones": [
+        {
+          "stage": 1,
+          "status": "completed",
+          "title": "User Research & Information Architecture",
+          "durationHours": 8,
+          "score": "92%",
+          "description": "User personas, empathy maps, journey mapping, and sitemap hierarchy.",
+          "type": "foundation",
+          "primaryResource": {
+            "title": "Google UX Design: Foundations of User Experience",
+            "provider": "Google / Coursera",
+            "url": "https://grow.google/certificates/ux-design/",
+            "cost": "Free to Audit ($0)",
+            "retailCost": "$39/mo"
+          },
+          "freeAlternative": {
+            "title": "Laws of UX & Interaction Design Foundation Open Articles",
+            "url": "https://lawsofux.com/",
+            "provider": "Laws of UX"
+          },
+          "practiceArena": {
+            "title": "Persona & Journey Map Template",
+            "type": "interactive",
+            "solved": "Completed"
+          },
+          "tasks": [
+            {
+              "id": "ux1",
+              "title": "Conduct user interviews & draft empathy map",
+              "completed": true
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "status": "in-progress",
+          "title": "Wireframing & Figma Auto-Layout Mastery",
+          "durationHours": 10,
+          "progressPercent": 70,
+          "dueLabel": "Active",
+          "description": "Low-fidelity wireframes, responsive Auto-Layout constraints, and UI component variants.",
+          "type": "core",
+          "primaryResource": {
+            "title": "Figma Official Auto Layout & Component Tutorials",
+            "provider": "Figma",
+            "url": "https://www.youtube.com/c/Figmadesign",
+            "cost": "Free ($0)",
+            "retailCost": "$0"
+          },
+          "freeAlternative": {
+            "title": "Figma Community Free UI Kits",
+            "url": "https://www.figma.com/community",
+            "provider": "Figma Community"
+          },
+          "practiceArena": {
+            "title": "Responsive Mobile App Flow in Figma",
+            "type": "sandbox",
+            "solved": "7 screens drafted"
+          },
+          "tasks": [
+            {
+              "id": "ux2",
+              "title": "Build a design system token library in Figma",
+              "completed": true
+            },
+            {
+              "id": "ux3",
+              "title": "Assemble interactive high-fidelity prototype",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "status": "locked",
+          "title": "Usability Testing & Portfolio Case Study",
+          "durationHours": 12,
+          "description": "Moderated usability testing, synthesizing insights, and publishing a polished case study.",
+          "type": "portfolio",
+          "primaryResource": {
+            "title": "Google UX Design: Usability Testing & Iteration",
+            "provider": "Google / Coursera",
+            "url": "https://grow.google/certificates/ux-design/",
+            "cost": "Free to Audit ($0)",
+            "retailCost": "$39/mo"
+          },
+          "freeAlternative": {
+            "title": "Nielsen Norman Group Usability 101",
+            "url": "https://www.nngroup.com/articles/usability-101-introduction-to-usability/",
+            "provider": "NNGroup"
+          },
+          "practiceArena": {
+            "title": "Case Study Presentation Deck",
+            "type": "portfolio",
+            "solved": "Locked"
+          },
+          "tasks": [
+            {
+              "id": "ux4",
+              "title": "Record usability test findings and iterate components",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "path-digital-marketing",
+      "slug": "digital-marketing-growth",
+      "title": "Digital Marketing & Growth Essentials",
+      "headline": "Master customer acquisition, SEO optimization, analytics tracking, and social ad campaigns.",
+      "category": "Digital Marketing",
+      "level": "Beginner",
+      "durationWeeks": 8,
+      "hoursPerWeek": 6,
+      "costTier": "$0 - $49",
+      "savingsEstimate": "$450 saved using free certifications and audit tiers",
+      "certificateType": "Industry-Recognized",
+      "rating": 4.8,
+      "reviewCount": 740,
+      "targetCredentials": [
+        {
+          "title": "HubSpot Inbound Marketing Certification",
+          "provider": "HubSpot",
+          "type": "Free Industry Credential",
+          "badge": "verified"
+        },
+        {
+          "title": "Google Digital Marketing Certificate",
+          "provider": "Google",
+          "type": "Professional Certificate",
+          "badge": "military_tech"
+        }
+      ],
+      "milestones": [
+        {
+          "stage": 1,
+          "status": "completed",
+          "title": "Inbound Marketing Fundamentals & Buyer Personas",
+          "durationHours": 12,
+          "score": "96%",
+          "description": "Attract, engage, and delight methodologies, SEO keyword research, and landing page conversion.",
+          "type": "foundation",
+          "primaryResource": {
+            "title": "HubSpot Inbound Marketing Certification Course",
+            "provider": "HubSpot Academy",
+            "url": "https://academy.hubspot.com/courses/inbound-marketing",
+            "cost": "100% Free ($0)",
+            "retailCost": "$0"
+          },
+          "freeAlternative": {
+            "title": "Google Digital Garage Fundamentals",
+            "url": "https://learndigital.withgoogle.com/digitalgarage",
+            "provider": "Google"
+          },
+          "practiceArena": {
+            "title": "Buyer Persona & Funnel Mapping Sheet",
+            "type": "interactive",
+            "solved": "Passed Certification Exam"
+          },
+          "tasks": [
+            {
+              "id": "dm1",
+              "title": "Pass HubSpot Inbound Exam with 80%+",
+              "completed": true
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "status": "in-progress",
+          "title": "Measurement with Google Analytics 4 (GA4)",
+          "durationHours": 15,
+          "progressPercent": 50,
+          "dueLabel": "Active",
+          "description": "Event tracking, conversion funnels, attribution models, and custom reports in GA4.",
+          "type": "core",
+          "primaryResource": {
+            "title": "Google Analytics Certification (Skillshop)",
+            "provider": "Google Skillshop",
+            "url": "https://skillshop.exceedlms.com/student/path/508845-google-analytics-certification",
+            "cost": "100% Free ($0)",
+            "retailCost": "$0"
+          },
+          "freeAlternative": {
+            "title": "GA4 Official Demo Account Exercises",
+            "url": "https://support.google.com/analytics/answer/6367342",
+            "provider": "Google Support"
+          },
+          "practiceArena": {
+            "title": "Google Merchandise Store GA4 Sandbox",
+            "type": "sandbox",
+            "solved": "Analysis in progress"
+          },
+          "tasks": [
+            {
+              "id": "dm2",
+              "title": "Configure conversion funnels and custom parameters",
+              "completed": true
+            },
+            {
+              "id": "dm3",
+              "title": "Complete GA4 official certification exam",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "status": "locked",
+          "title": "Paid Ad Campaigns & E-Commerce Strategy",
+          "durationHours": 18,
+          "description": "Meta Ads Manager, Google Search Ads, A/B testing ad creatives, and return on ad spend (ROAS).",
+          "type": "portfolio",
+          "primaryResource": {
+            "title": "Google Digital Marketing & E-commerce Certificate",
+            "provider": "Google / Coursera",
+            "url": "https://grow.google/certificates/digital-marketing-ecommerce/",
+            "cost": "Free to Audit ($0)",
+            "retailCost": "$39/mo"
+          },
+          "freeAlternative": {
+            "title": "Meta Blueprint Free Marketing Courses",
+            "url": "https://www.facebook.com/business/learn",
+            "provider": "Meta"
+          },
+          "practiceArena": {
+            "title": "Mock Campaign Ad Budget & Creative Deck",
+            "type": "portfolio",
+            "solved": "Locked"
+          },
+          "tasks": [
+            {
+              "id": "dm4",
+              "title": "Design multi-channel growth campaign blueprint",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "path-conversational-spanish",
+      "slug": "conversational-spanish-accelerator",
+      "title": "Conversational Spanish for Professionals",
+      "headline": "Master practical fluency, workplace situational dialogues, and structural verb conjugation without rote grammar tables.",
+      "category": "Conversational Spanish",
+      "level": "Beginner to Intermediate",
+      "durationWeeks": 12,
+      "hoursPerWeek": 5,
+      "costTier": "$0 Free",
+      "savingsEstimate": "$500 saved avoiding private language academies",
+      "certificateType": "Practical Skills & Portfolio Only",
+      "rating": 4.9,
+      "reviewCount": 610,
+      "targetCredentials": [
+        {
+          "title": "CEFR A2/B1 Conversational Fluency Portfolio",
+          "provider": "SkillPath Assessment",
+          "type": "Validation Milestone",
+          "badge": "record_voice_over"
+        }
+      ],
+      "milestones": [
+        {
+          "stage": 1,
+          "status": "completed",
+          "title": "Phonetics, Cognates & Sentence Mechanics",
+          "durationHours": 15,
+          "score": "95%",
+          "description": "Mastering regular vowel sounds, English-Spanish cognates, and the thinking method.",
+          "type": "foundation",
+          "primaryResource": {
+            "title": "Language Transfer: Complete Spanish (Tracks 1-30)",
+            "provider": "Language Transfer (Mihalis Eleftheriou)",
+            "url": "https://www.languagetransfer.org/free-courses-1#complete-spanish",
+            "cost": "100% Free / Donation ($0)",
+            "retailCost": "$0"
+          },
+          "freeAlternative": {
+            "title": "FSI Spanish Basic Course (Units 1-15)",
+            "url": "https://www.openculture.com/foreign_service_institute_spanish",
+            "provider": "Foreign Service Institute"
+          },
+          "practiceArena": {
+            "title": "Audio Drill Pronunciation Sandbox",
+            "type": "audio",
+            "solved": "30 lessons audited"
+          },
+          "tasks": [
+            {
+              "id": "sp1",
+              "title": "Construct 50 spontaneous sentences using cognates",
+              "completed": true
+            }
+          ]
+        },
+        {
+          "stage": 2,
+          "status": "in-progress",
+          "title": "Past & Future Tense Structural Mastery",
+          "durationHours": 20,
+          "progressPercent": 45,
+          "dueLabel": "Active",
+          "description": "Preterite vs imperfect distinctions, future phrasing with 'ir a', and object pronouns.",
+          "type": "core",
+          "primaryResource": {
+            "title": "Language Transfer: Complete Spanish (Tracks 31-60)",
+            "provider": "Language Transfer",
+            "url": "https://www.languagetransfer.org/free-courses-1#complete-spanish",
+            "cost": "100% Free ($0)",
+            "retailCost": "$0"
+          },
+          "freeAlternative": {
+            "title": "SpanishDict Interactive Grammar Quizzes",
+            "url": "https://www.spanishdict.com/guide",
+            "provider": "SpanishDict"
+          },
+          "practiceArena": {
+            "title": "Live Language Exchange Partner Simulation",
+            "type": "practice",
+            "solved": "3 hours conversational partner session logged"
+          },
+          "tasks": [
+            {
+              "id": "sp2",
+              "title": "Narrate past personal experiences without notes",
+              "completed": true
+            },
+            {
+              "id": "sp3",
+              "title": "Conduct 15-minute voice call in Spanish on Tandem",
+              "completed": false
+            }
+          ]
+        },
+        {
+          "stage": 3,
+          "status": "locked",
+          "title": "Professional Situational Dialogues & Defense",
+          "durationHours": 25,
+          "description": "Meetings, negotiations, formal email correspondence, and telephone communication.",
+          "type": "portfolio",
+          "primaryResource": {
+            "title": "FSI Spanish Headstart for Latin America",
+            "provider": "U.S. Foreign Service Institute",
+            "url": "https://www.openculture.com/foreign_service_institute_spanish",
+            "cost": "100% Free ($0)",
+            "retailCost": "$0"
+          },
+          "freeAlternative": {
+            "title": "Notes in Spanish Intermediate Podcast",
+            "url": "https://www.notesinspanish.com/",
+            "provider": "Notes in Spanish"
+          },
+          "practiceArena": {
+            "title": "10-Minute Spoken Video Portfolio Defense",
+            "type": "portfolio",
+            "solved": "Locked"
+          },
+          "tasks": [
+            {
+              "id": "sp4",
+              "title": "Record and publish unscripted 10-minute conversational monologue",
+              "completed": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "internships": [
+    {
+      "id": "intern-outreachy",
+      "role": "Open Source Software & Documentation Intern",
+      "organization": "Outreachy",
+      "location": "Global / Worldwide",
+      "remoteStatus": "Remote",
+      "compensation": "Paid ($7,000 USD stipend + up to $500 travel stipend)",
+      "isPaid": true,
+      "duration": "3 months (May–Aug & Dec–Mar)",
+      "deadline": "Cohort-based (Bi-annual application rounds)",
+      "field": "Software Engineering",
+      "source": "Outreachy Official Program Directory",
+      "lastVerified": "2025-03-15",
+      "isVerified": true,
+      "applicationUrl": "https://www.outreachy.org/apply/",
+      "description": "Outreachy provides paid internships in open source to support diversity. Open to individuals worldwide subject to systemic bias or underrepresentation in the tech industry of their country.",
+      "requirements": "Must complete initial eligibility quiz, contribute to a participating open source project during the contribution period, and submit a final application."
+    },
+    {
+      "id": "intern-gsoc",
+      "role": "Open Source Contributor / Developer Mentee",
+      "organization": "Google Open Source Programs Office",
+      "location": "Global / Worldwide",
+      "remoteStatus": "Remote",
+      "compensation": "Paid (Stipend adjusted for local cost of living, ~$1,500-$3,000)",
+      "isPaid": true,
+      "duration": "12 to 22 weeks (Flexible scheduling)",
+      "deadline": "Annual March–April proposal window",
+      "field": "Open Source",
+      "source": "Google Summer of Code Official Website",
+      "lastVerified": "2025-03-15",
+      "isVerified": true,
+      "applicationUrl": "https://summerofcode.withgoogle.com/",
+      "description": "An international program focused on bringing new contributors into open source software development. Participants work with mentor organizations on real-world codebases.",
+      "requirements": "Open to students and open-source beginners aged 18+ in eligible countries. Must write and submit a detailed project proposal to an accepted mentor organization."
+    },
+    {
+      "id": "intern-lfx",
+      "role": "Cloud Native & Linux Kernel Mentee",
+      "organization": "The Linux Foundation (LFX)",
+      "location": "Global / Worldwide",
+      "remoteStatus": "Remote",
+      "compensation": "Paid ($3,000 to $6,600 stipend based on location and term length)",
+      "isPaid": true,
+      "duration": "12 weeks full-time or 24 weeks part-time",
+      "deadline": "Tri-annual terms (Spring, Summer, Fall cycles)",
+      "field": "Software Engineering",
+      "source": "Linux Foundation Mentorship (LFX) Portal",
+      "lastVerified": "2025-03-12",
+      "isVerified": true,
+      "applicationUrl": "https://lfx.linuxfoundation.org/tools/mentorship/",
+      "description": "Direct mentorship with maintainers of foundational cloud native, Kubernetes, Hyperledger, and Linux kernel projects. Gain verifiable contributions to production open source infrastructure.",
+      "requirements": "Demonstrate basic competency in Go, C, Python, or Rust. Submit CV and work sample through LFX portal."
+    },
+    {
+      "id": "intern-mlh",
+      "role": "Open Source Software Engineering Fellow",
+      "organization": "Major League Hacking (MLH)",
+      "location": "Global / Worldwide",
+      "remoteStatus": "Remote",
+      "compensation": "Paid (Need-based educational stipend up to $6,000)",
+      "isPaid": true,
+      "duration": "12 weeks intensive (Spring, Summer, Fall)",
+      "deadline": "Rolling admissions per seasonal batch",
+      "field": "Software Engineering",
+      "source": "MLH Fellowship Official Portal",
+      "lastVerified": "2025-03-14",
+      "isVerified": true,
+      "applicationUrl": "https://fellowship.mlh.io/",
+      "description": "An alternative to conventional internships where fellows contribute directly to production open source libraries used by millions, guided by professional senior engineer mentors.",
+      "requirements": "Must have at least 1 functional code sample on GitHub and pass a technical screening interview."
+    },
+    {
+      "id": "intern-unv",
+      "role": "Global Data Analysis & Research Contributor",
+      "organization": "United Nations Volunteers (UNV)",
+      "location": "Global / Worldwide",
+      "remoteStatus": "Remote",
+      "compensation": "Unpaid (Public service & official UN Certificate of Appreciation)",
+      "isPaid": false,
+      "duration": "4 to 12 weeks flexible (1–5 hrs/wk)",
+      "deadline": "Continuous / Rolling opportunities",
+      "field": "Data & AI",
+      "source": "UN Online Volunteering Portal",
+      "lastVerified": "2025-03-16",
+      "isVerified": true,
+      "applicationUrl": "https://www.unv.org/online-volunteering",
+      "description": "Collaborate with UN agencies and global NGOs on data visualization, statistical research, and GIS analysis addressing global development goals.",
+      "requirements": "Proficiency in Excel, Python, R, or statistical analysis. Open to university students and professionals worldwide."
+    },
+    {
+      "id": "sample-intern-hubspot",
+      "role": "Inbound Growth & Content Marketing Apprentice [Sample Listing]",
+      "organization": "HubSpot (Demonstration Partner)",
+      "location": "Hybrid - Boston, MA / Remote",
+      "remoteStatus": "Hybrid",
+      "compensation": "Paid ($18-$22/hr)",
+      "isPaid": true,
+      "duration": "16 weeks",
+      "deadline": "Sample listing for prototype demonstration",
+      "field": "Digital Marketing",
+      "source": "Sample Listing (For Demonstration)",
+      "lastVerified": "2025-03-01",
+      "isVerified": false,
+      "applicationUrl": "https://www.hubspot.com/careers",
+      "description": "[Sample Prototype Listing] Early-career apprenticeship supporting blog content strategy, SEO keyword optimization, and email nurturing workflows.",
+      "requirements": "Sample demonstration requirements. Demonstrates company apprenticeship filtering in prototype."
+    },
+    {
+      "id": "sample-intern-figma",
+      "role": "Junior UI/UX & Design Systems Apprentice [Sample Listing]",
+      "organization": "Design Systems Guild (Demonstration Partner)",
+      "location": "Remote (US & Canada)",
+      "remoteStatus": "Remote",
+      "compensation": "Paid ($20-$25/hr)",
+      "isPaid": true,
+      "duration": "10 weeks",
+      "deadline": "Sample listing for prototype demonstration",
+      "field": "UI/UX Design",
+      "source": "Sample Listing (For Demonstration)",
+      "lastVerified": "2025-03-01",
+      "isVerified": false,
+      "applicationUrl": "https://www.figma.com/careers/",
+      "description": "[Sample Prototype Listing] Work closely with product designers auditing accessibility contrast, component variants, and mobile wireframes in Figma.",
+      "requirements": "Sample demonstration requirements. Portfolio with at least 2 case studies."
+    },
+    {
+      "id": "intern-google-step",
+      "role": "Student Training in Engineering Program (STEP) Intern",
+      "organization": "Google",
+      "location": "United States (select Google offices) / Remote options vary by year",
+      "remoteStatus": "Hybrid",
+      "compensation": "Paid (Compensated at standard Google internship pay bands + housing stipend where applicable)",
+      "isPaid": true,
+      "duration": "12 weeks (Summer cohort)",
+      "deadline": "Applications typically open Sept-Oct for the following summer",
+      "field": "Software Engineering",
+      "source": "Google Careers - STEP Internship Program",
+      "lastVerified": "2025-03-18",
+      "isVerified": true,
+      "applicationUrl": "https://buildyourfuture.withgoogle.com/programs/step/",
+      "description": "A first and second-year university internship introducing students - especially those from groups underrepresented in tech - to a career in software engineering through mentorship and real project work.",
+      "requirements": "Currently enrolled first- or second-year undergraduate student with some coding coursework or personal project experience (any language)."
+    },
+    {
+      "id": "intern-rgsoc",
+      "role": "Open Source Contributor (Team of Two)",
+      "organization": "Rails Girls Summer of Code (RGSoC)",
+      "location": "Global / Worldwide",
+      "remoteStatus": "Remote",
+      "compensation": "Paid ($6,000 stipend split between a 2-person team over 3 months)",
+      "isPaid": true,
+      "duration": "3 months (Summer cohort)",
+      "deadline": "Annual application window (check site for current cycle)",
+      "field": "Open Source",
+      "source": "Rails Girls Summer of Code Official Website",
+      "lastVerified": "2025-03-18",
+      "isVerified": true,
+      "applicationUrl": "https://railsgirlssummerofcode.org/",
+      "description": "A scholarship program for women, trans, and non-binary developers to work full-time in pairs on an open source project of their choice for three months, mentored by experienced open source contributors.",
+      "requirements": "Team of two (women/trans/non-binary), basic programming familiarity, and a chosen open source project with an available mentor."
+    }
+  ]
+}

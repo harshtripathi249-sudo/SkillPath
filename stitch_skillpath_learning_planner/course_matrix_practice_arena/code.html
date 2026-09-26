@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;font-family:'Plus Jakarta Sans',sans-serif;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-background": "#131b2e", "inverse-primary": "#c3c0ff", "on-tertiary-container": "#ffd4a4", "outline": "#777587", "secondary-fixed-dim": "#4edea3", "surface-tint": "#4d44e3", "on-tertiary-fixed": "#2a1700", "on-secondary-fixed": "#002113", "tertiary-fixed": "#ffddb8", "surface-container-lowest": "#ffffff", "surface-container-high": "#e2e7ff", "on-error-container": "#93000a", "secondary-container": "#6cf8bb", "primary": "#3525cd", "on-secondary": "#ffffff", "error-container": "#ffdad6", "on-primary-fixed-variant": "#3323cc", "surface-dim": "#d2d9f4", "outline-variant": "#c7c4d8", "primary-container": "#4f46e5", "on-error": "#ffffff", "primary-fixed": "#e2dfff", "surface-container-low": "#f2f3ff", "secondary-fixed": "#6ffbbe", "on-tertiary": "#ffffff", "tertiary-container": "#885500", "on-surface-variant": "#464555", "error": "#ba1a1a", "tertiary": "#684000", "on-secondary-container": "#00714d", "surface": "#faf8ff", "on-primary-container": "#dad7ff", "inverse-on-surface": "#eef0ff", "surface-container": "#eaedff", "surface-bright": "#faf8ff", "on-surface": "#131b2e", "on-primary": "#ffffff", "primary-fixed-dim": "#c3c0ff", "on-secondary-fixed-variant": "#005236", "inverse-surface": "#283044", "background": "#faf8ff", "secondary": "#006c49", "on-primary-fixed": "#0f0069", "surface-variant": "#dae2fd", "on-tertiary-fixed-variant": "#653e00", "surface-container-highest": "#dae2fd", "tertiary-fixed-dim": "#ffb95f" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-sm": "0.5rem", "space-xs": "0.25rem", "space-md": "1rem", "space-xl": "2rem", "gutter": "1rem", "margin": "1rem", "space-lg": "1.5rem" }, "fontFamily": { "headline-lg-mobile": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "display-lg-mobile": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"] }, "fontSize": { "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }], "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "display-lg-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.025em", "fontWeight": "800" }], "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800" }] } } } };</script></head><body class="bg-surface text-on-surface font-body-md flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="SkillPath Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UJs4NdPSKMTEOZ_9o2uV1JkFbI7s9K9syEQFzx4gp7EUZOeB0HEntABJZYCtHM8qS-_ysY_-2Pidb4HX4g58aAQEspLQWdrSn7OXezbjiKxndcB5dKYCwBAlelmsIDiAY1WcreCtBbjW7p89tCtDJkKTdwKAJc0YsyJVyzKGh61mooi_idNrvCl9jgDOmhRhzwNok0bPx-xH3j0jTEydskWM4lznlCafCyAj7ia24sRmQqLiTcSSQxeB6e"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold">SkillPath</span><span class="hidden">Practice</span></div><div class="flex items-center gap-space-sm"><div class="relative flex items-center justify-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9URHscwPYO5Tx33726mNZUd9h_EsRfFtik5h0rQ7w7UqC9NXZakO22h3nNDD2TBXXOgWQ_m2ygyRWzP6JuUwfjmIgE6o-QRhTvrmDyIbXCOHmfpjF4U7Olyj-FYJz-H_u51FMeENmHLQsD43vDgn7uh3gc9nsIsc5JUiS7kcjug8h3ck83HJ3HIeJx_rhCnSkWITLlL9LEW3HR6leFoBC3iZgG61qor4JNh6VMDsVD7yVeIICGJ1-Bg"/><span class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-primary rounded-full ring-2 ring-surface"></span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full pb-10">
+<div class="px-gutter pt-4 pb-2">
+<nav class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="hover:text-primary transition-colors cursor-pointer">My Path</span>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="hover:text-primary transition-colors cursor-pointer">Data Analytics</span>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="text-primary font-bold">SQL Mastery</span>
+</nav>
+<div class="mt-2 flex items-center justify-between">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight">
+        Module 2 Deep-Dive: SQL &amp; Relational Databases
+      </h1>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+      Master schema design, multi-table joins, subqueries, and window functions through verified curricula and real-world queries.
+    </p>
+</div>
+<section class="px-gutter mt-4">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Curated Matrix</h2>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant px-2.5 py-1 rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+        Verified Mar 2025
+      </span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-md relative overflow-hidden mb-4">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
+<div class="flex items-start justify-between gap-3 mb-3">
+<div class="flex items-center gap-2.5">
+<img class="w-10 h-10 rounded-lg object-cover shadow-sm flex-shrink-0" data-alt="Official Google cloud certification credential icon rendered in crisp minimalist digital vector style with vibrant indigo and gold accents against clean off-white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvsUR1EqdmDLbVFwH8quLuxMZvD5L51ZZzoctEVDnxWPwMhIrDQ1vcxh0zeYjyGWLHKzSd87FFzgnSGW8GKYZFz_KEuTTppHwXeYBEBD0pQLKsHS9XvMVcipjON0gg-YRjhStfuP-MMs5sG17KDsc3XLH6S4mzjcHd6ZfbIsjHnqKdBF4hkfb7exgCiAsg-td4oqBikfz4JavrVBPN1ttWvZxuuQvUM1X-szX-V8uS3VTdYTUwSCTtvw"/>
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-bold">Top Verified Recommendation</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-snug">Google Data Analytics: Process Data with SQL</h3>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+        Official Coursera specialization module focusing on BigQuery syntax, data cleansing workflows, and robust relational logic.
+      </p>
+<div class="grid grid-cols-2 gap-2 mb-4">
+<div class="bg-surface-container-low p-2.5 rounded-lg flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Employer Score</span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">92</span>
+<span class="font-label-sm text-label-sm text-outline">/ 100</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">workspace_premium</span> High Recognition
+          </span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Cost &amp; Duration</span>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-1">$39<span class="font-label-sm text-label-sm text-on-surface-variant font-normal">/mo</span></div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold mt-0.5 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">savings</span> Audit Free (Save $39)
+          </span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-2 mb-4">
+<span class="bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm px-2.5 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">school</span> Professional Cert Component
+        </span>
+<span class="bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm px-2.5 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 18 hrs completion
+        </span>
+</div>
+<div class="flex items-center gap-2">
+<a class="flex-1 bg-primary text-on-primary font-label-lg text-label-lg h-11 px-4 rounded-xl flex items-center justify-center gap-2 shadow-sm transition-transform active:scale-[0.98]" href="#">
+<span>Enroll via Coursera</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+<button class="h-11 px-3 rounded-xl bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" id="toggle-audit-tip">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</button>
+</div>
+<div class="hidden mt-3 p-3 bg-tertiary-fixed text-on-tertiary-fixed rounded-lg text-body-sm font-body-sm" id="audit-tip-box">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-tertiary text-[18px] flex-shrink-0 mt-0.5">lightbulb</span>
+<p>
+<strong>Pro-tip for Free Access:</strong> Click "Enroll", then choose "Audit the single course" at the bottom of the prompt to access all video lectures and quizzes for $0.
+          </p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between mb-2">
+<span class="bg-secondary text-on-secondary font-label-sm text-label-sm font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full">
+          Budget Alternative
+        </span>
+<span class="font-label-sm text-label-sm text-secondary font-bold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[15px]">money_off</span> 100% Free
+        </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">The Odin Project &amp; freeCodeCamp</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 mb-3">
+        Zero-cost, open-source PostgreSQL mastery curriculum. Covers relational calculus, normalization up to 3NF, and hands-on terminal bash scripting.
+      </p>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-2">
+<span class="bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm px-2.5 py-1 rounded-full">
+            Self-Paced
+          </span>
+<span class="bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm px-2.5 py-1 rounded-full">
+            PostgreSQL Focus
+          </span>
+</div>
+<a class="font-label-md text-label-md text-primary font-bold flex items-center gap-1 hover:underline" href="#">
+<span>Explore Syllabus</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<section class="px-gutter mt-6">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Practice &amp; Validation Arena</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">3 Tasks Available</span>
+</div>
+<div class="space-y-3">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md">
+<div class="flex items-start justify-between gap-3">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap mb-1">
+<span class="bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm px-2 py-0.5 rounded-full font-bold">
+                Query Drills
+              </span>
+<span class="text-outline font-label-sm text-label-sm">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Difficulty: Easy to Medium</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">LeetCode 50 SQL Study Plan</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              50 curated queries targeting window functions, self-joins, consecutive login streaks, and aggregate filters.
+            </p>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined text-[20px]">code</span>
+</div>
+</div>
+<div class="mt-3 pt-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-20 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 32%;"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">16/50 solved</span>
+</div>
+<a class="font-label-md text-label-md text-primary font-bold flex items-center gap-1 hover:underline" href="#">
+            Launch Sandbox
+            <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md">
+<div class="flex items-start justify-between gap-3">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap mb-1">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm px-2 py-0.5 rounded-full font-bold">
+                Real-World Data
+              </span>
+<span class="text-outline font-label-sm text-label-sm">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Dataset size: 120k rows</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Kaggle: E-Commerce Customer Trends</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Interactive Jupyter/SQL sandbox. Calculate cohort retention, churn rates, and average cart size across multiple table clusters.
+            </p>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center flex-shrink-0 text-secondary">
+<span class="material-symbols-outlined text-[20px]">dataset</span>
+</div>
+</div>
+<div class="mt-3 pt-3 flex items-center justify-between">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[15px]">table_view</span>
+<span>4 relational tables ready</span>
+</div>
+<a class="font-label-md text-label-md text-primary font-bold flex items-center gap-1 hover:underline" href="#">
+            Open Notebook
+            <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all hover:shadow-md">
+<div class="flex items-start justify-between gap-3">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap mb-1">
+<span class="bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm px-2 py-0.5 rounded-full font-bold">
+                Skill Validation
+              </span>
+<span class="text-outline font-label-sm text-label-sm">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">45 mins timed</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">SkillPath SQL Mock Assessment</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              25 timed scenario-based questions simulating Google &amp; Meta technical screening rubrics.
+            </p>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined text-[20px]">timer</span>
+</div>
+</div>
+<div class="mt-3 pt-3 flex items-center justify-between">
+<span class="font-label-sm text-label-sm bg-surface-container text-on-surface-variant px-2 py-1 rounded">
+            Passing mark: 80%
+          </span>
+<span class="font-label-sm text-label-sm text-outline font-semibold">Not Attempted</span>
+</div>
+</div>
+</div>
+</section>
+<section class="px-gutter mt-6">
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<img class="w-12 h-12 rounded-lg object-cover shadow-sm flex-shrink-0" data-alt="Modern collaborative programming sandbox terminal with syntax highlighted SQL code queries on dark glowing interface screen, captured in subtle soft focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_CqGGL6EQs5sxsw1-rQ62TmFkuu6QFALf83-pGWRSpxtWuZyPS0VEirRNv3mixteHMPDn068IMTpxQ0ziiq33oWmUyS6AbYNFEvXlayxn5Wcd0mf-xiS2iTZMzoZ6-hgBhFpTFmdBd5mUaBJLN-IEy52EHk3TVDvEkhwMgUT4DIDJyCuQB7NwMWGpDgIzKAKrlbh1sqgsvKmEDU7a5GcmzLKX3ibwKe1hQpGmaARngbcP34KuExaYcg"/>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Ready to test your queries?</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Zero-setup terminal directly preloaded with PostgreSQL 16.</p>
+</div>
+</div>
+<div class="flex flex-col gap-2.5 mt-1">
+<button class="w-full bg-primary-container text-on-primary font-label-lg text-label-lg h-12 rounded-xl flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.98]" id="launch-sandbox-btn">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+<span>Launch Interactive Sandbox</span>
+</button>
+<button class="w-full bg-surface-container-lowest text-on-surface font-label-lg text-label-lg h-12 rounded-xl flex items-center justify-center gap-2 shadow-sm transition-all active:scale-[0.98]" id="validate-module-btn">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<span id="validate-btn-text">Mark Module as Validated</span>
+</button>
+</div>
+</div>
+</section>
+<div class="hidden fixed bottom-20 left-4 right-4 bg-inverse-surface text-inverse-on-surface p-4 rounded-xl shadow-xl z-50 transition-all flex items-center justify-between gap-3" id="validation-toast">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-fixed text-[24px]">verified</span>
+<div>
+<div class="font-label-lg text-label-lg font-bold">Module Validated!</div>
+<div class="font-body-sm text-body-sm opacity-90">Progress updated across your learning path.</div>
+</div>
+</div>
+<button class="text-inverse-on-surface p-1" id="close-toast">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<script>
+  (function() {
+    const tipBtn = document.getElementById('toggle-audit-tip');
+    const tipBox = document.getElementById('audit-tip-box');
+    if (tipBtn && tipBox) {
+      tipBtn.addEventListener('click', () => {
+        tipBox.classList.toggle('hidden');
+      });
+    }
+
+    const validateBtn = document.getElementById('validate-module-btn');
+    const validateText = document.getElementById('validate-btn-text');
+    const toast = document.getElementById('validation-toast');
+    const closeToast = document.getElementById('close-toast');
+    let isValidated = false;
+
+    if (validateBtn) {
+      validateBtn.addEventListener('click', () => {
+        isValidated = !isValidated;
+        if (isValidated) {
+          validateBtn.classList.remove('bg-surface-container-lowest', 'text-on-surface');
+          validateBtn.classList.add('bg-secondary', 'text-on-secondary');
+          validateText.textContent = 'Module Completed & Validated';
+          if (toast) {
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+              toast.classList.add('hidden');
+            }, 3500);
+          }
+        } else {
+          validateBtn.classList.add('bg-surface-container-lowest', 'text-on-surface');
+          validateBtn.classList.remove('bg-secondary', 'text-on-secondary');
+          validateText.textContent = 'Mark Module as Validated';
+        }
+      });
+    }
+
+    if (closeToast && toast) {
+      closeToast.addEventListener('click', () => {
+        toast.classList.add('hidden');
+      });
+    }
+
+    const sandboxBtn = document.getElementById('launch-sandbox-btn');
+    if (sandboxBtn) {
+      sandboxBtn.addEventListener('click', () => {
+        sandboxBtn.innerHTML = '<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span><span>Spinning Up Session...</span>';
+        setTimeout(() => {
+          sandboxBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span><span>Sandbox Terminal Ready</span>';
+          setTimeout(() => {
+            sandboxBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">terminal</span><span>Launch Interactive Sandbox</span>';
+          }, 2000);
+        }, 1200);
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.04)]" data-active-classes="text-primary bg-primary/10"><div class="flex items-center justify-around h-16 px-space-xs"><a class="group flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-sm py-space-xs rounded-xl text-on-surface-variant transition-colors" data-path="explore" href="#"><span class="material-symbols-outlined text-[22px]">explore</span><span class="font-label-sm text-label-sm mt-0.5">Explore</span></a><a class="group flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-sm py-space-xs rounded-xl text-on-surface-variant transition-colors" data-path="my-path" href="#"><span class="material-symbols-outlined text-[22px]">alt_route</span><span class="font-label-sm text-label-sm mt-0.5">My Path</span></a><a aria-current="page" class="group flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-sm py-space-xs rounded-xl transition-colors text-primary bg-primary/10" data-path="practice" href="#"><span class="material-symbols-outlined text-[22px]">terminal</span><span class="font-label-sm text-label-sm mt-0.5">Practice</span></a><a class="group flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-sm py-space-xs rounded-xl text-on-surface-variant transition-colors" data-path="profile" href="#"><span class="material-symbols-outlined text-[22px]">person</span><span class="font-label-sm text-label-sm mt-0.5">Profile</span></a></div></nav></body></html>

@@ -1,0 +1,35 @@
+# Product Requirements Document (PRD): SkillPath – Guided Learning & Certification Planner
+
+## 1. Executive Summary
+SkillPath is an interactive web-based guide that transforms vague educational goals (e.g., “learn Python,” “break into digital marketing,” or “get a data analytics certificate”) into structured, actionable learning paths. By evaluating user constraints—such as current proficiency, available time, budget, and certification needs—SkillPath cuts through the noise of scattered online resources to deliver a personalized roadmap complete with courses, practice arenas, milestone sequencing, and low-cost alternatives.
+
+## 2. Problem Statement & Opportunity
+- **The Problem:** Learners face overwhelming fragmentation when trying to master a new skill. Existing platforms offer millions of courses, but deciding what to study first, where to find reputable instruction, how much it will cost, and which certificates carry actual industry weight is confusing and time-consuming.
+- **The Opportunity:** A centralized planner that curates, sequences, and personalizes learning paths reduces friction, saves money by highlighting free/low-cost alternatives, and sets realistic expectations regarding certification value.
+
+## 3. Target Audience
+- Career Switchers / Upskillers
+- Students & Lifelong Learners
+- Budget-Conscious Learners
+
+## 4. User Flow & Onboarding Experience
+1. **Goal Input:** Primary objective selection & search.
+2. **Constraint Discovery Questionnaire:**
+   - Current Experience Level (Absolute Beginner, Intermediate, Advanced)
+   - Time Commitment (hours/week)
+   - Budget (Free-only, Low-budget $1–$50/mo, Flexible/Enterprise)
+   - Preferred Learning Style (Video-heavy, Hands-on/Project-based, Reading/Docs)
+   - Credential Need (Course Completion vs. Industry-Recognized vs. None)
+3. **Path Generation:** Customized chronological curriculum.
+
+## 5. Core Product Features & Functional Requirements
+- **5.1 Personalized Learning Path & Sequencing:** Sequential roadmap, milestone tracker, checklist/progress.
+- **5.2 Course Recommendations Matrix:** Provider details, metadata tags, credential transparency layer (Course Completion vs Industry-Recognized Certifications).
+- **5.3 Practice & Validation Arena:** Coding challenges, interactive sandboxes, dataset repositories, mock exams.
+- **5.4 Budget Optimization & Alternatives:** Free & open-source alternative routes alongside paid options.
+
+## 6. Prototype Scope (Phase 1)
+- Tech: Python for Beginners, Web Development Fundamentals
+- Business & Marketing: Digital Marketing Essentials, Intro to Data Analysis
+- Design: UI/UX Fundamentals
+- Languages: Conversational Spanish/French
