@@ -7,24 +7,65 @@ Built strictly adhering to the **Kinetic Horizon** design system and the Stitch 
 ---
 
 ## Table of Contents
-1. [Core Features](#core-features)
-2. [Architecture & Technology Stack](#architecture--technology-stack)
-3. [Light & Dark Mode](#light--dark-mode)
-4. [Prerequisites](#prerequisites)
-5. [Installation & Setup](#installation--setup)
-6. [Environment Configuration](#environment-configuration)
-7. [Running the Application](#running-the-application)
-8. [Running Configured Checks](#running-configured-checks)
-9. [Course Showcase (Layout & Motion Reference)](#course-showcase-layout--motion-reference)
-10. [Internships Directory](#internships-directory)
-11. [Interactive Learning Coach](#interactive-learning-coach)
-12. [Distinct Learning Path Generation](#distinct-learning-path-generation)
-13. [User Accounts & Personalization (Firebase)](#user-accounts--personalization-firebase)
-14. [Firebase Setup (Login, Streaks & Per-User Data)](#firebase-setup-login-streaks--per-user-data)
-15. [Database & Seed Data Model](#database--seed-data-model)
-16. [API Route Reference](#api-route-reference)
-17. [Verification Registry (Courses & Internships)](#verification-registry-courses--internships)
-18. [Deployment: Backend on Render, Frontend on Vercel](#deployment-backend-on-render-frontend-on-vercel)
+1. [Application Prototype Screens](#-application-prototype-screens)
+2. [Core Features](#core-features)
+3. [Architecture & Technology Stack](#architecture--technology-stack)
+4. [Light & Dark Mode](#light--dark-mode)
+5. [Prerequisites](#prerequisites)
+6. [Installation & Setup](#installation--setup)
+7. [Environment Configuration](#environment-configuration)
+8. [Running the Application](#running-the-application)
+9. [Running Configured Checks](#running-configured-checks)
+10. [Course Showcase (Layout & Motion Reference)](#course-showcase-layout--motion-reference)
+11. [Internships Directory](#internships-directory)
+12. [Interactive Learning Coach](#interactive-learning-coach)
+13. [Distinct Learning Path Generation](#distinct-learning-path-generation)
+14. [User Accounts & Personalization (Firebase)](#user-accounts--personalization-firebase)
+15. [Firebase Setup (Login, Streaks & Per-User Data)](#firebase-setup-login-streaks--per-user-data)
+16. [Database & Seed Data Model](#database--seed-data-model)
+17. [API Route Reference](#api-route-reference)
+18. [Verification Registry (Courses & Internships)](#verification-registry-courses--internships)
+19. [Deployment: Backend on Render, Frontend on Vercel](#deployment-backend-on-render-frontend-on-vercel)
+
+---
+
+## 📸 Application Prototype Screens
+
+> **Live Deployment:** [skill-path-sooty-chi.vercel.app](https://skill-path-sooty-chi.vercel.app)  
+> Interactive, responsive UI adhering strictly to the **Kinetic Horizon** design system with persistent Light and Dark themes.
+
+### 1. Personalized Learning Path Dashboard (`My Path`)
+AI-curated learning roadmaps with customized milestone breakdown ("Junior Data Analyst to Certified Pro"), budget-optimization mode (saving $411 via audited tracks and open-source sandboxes), live streak counters, and structured lesson checkpoints.
+
+![Personalized Learning Path Dashboard](docs/screenshots/03-my-path-roadmap.png)
+
+---
+
+### 2. Explore & Roadmap Discovery (Light Theme)
+Goal discovery hero section with 60-second diagnostic assessment trigger, target industry credential pathways (Google, AWS, Meta), and responsive curated learning path slider and grid view.
+
+![Explore & Roadmap Discovery (Light)](docs/screenshots/01-explore-discovery-light.png)
+
+---
+
+### 3. Featured Program Showcase (Dark Theme)
+High-contrast dark mode showcasing top-tier curated programs with auto-scrolling hero cards (HubSpot Inbound Marketing, Harvard CS50, Google UX), category filters, and verified $0 audit tips.
+
+![Featured Program Showcase (Dark)](docs/screenshots/02-explore-showcase-dark.png)
+
+---
+
+### 4. Practice Arena & Interactive SQL Sandbox
+In-browser PostgreSQL sandbox terminal paired with timed technical mock screening assessments (simulating Google & Meta rubrics) and immediate module validation.
+
+![Practice Arena & Interactive SQL Sandbox](docs/screenshots/04-practice-sandbox-assessment.png)
+
+---
+
+### 5. Course & Certification Directory
+Filterable catalog covering 24+ verified resources across Python, Web Dev, UI/UX, and Data Analytics with 100% price transparency (course access vs. optional certificate costs) and verified provider badges.
+
+![Course & Certification Directory](docs/screenshots/05-course-directory-audit.png)
 
 ---
 
@@ -321,10 +362,10 @@ The `backend/` and `frontend/` folders are independent - each can be deployed to
    - `FIREBASE_API_KEY`, `FIREBASE_AUTH_DOMAIN`, `FIREBASE_PROJECT_ID`, `FIREBASE_STORAGE_BUCKET`, `FIREBASE_MESSAGING_SENDER_ID`, `FIREBASE_APP_ID`, `FIREBASE_MEASUREMENT_ID` - from your Firebase project's Web App config (see **Firebase Setup** above).
 4. Before (or after) deploying, edit [`frontend/js/config.js`](frontend/js/config.js) and set:
    ```js
-   window.SKILLPATH_API_BASE_URL = 'https://skillpath-backend.onrender.com';
+   window.SKILLPATH_API_BASE_URL = 'https://skillpath-backend-pa4q.onrender.com';
    ```
    using your actual Render URL from step 1, then commit and redeploy.
-5. Once deployed, note your frontend URL, e.g. `https://skillpath.vercel.app`, and set it as `CORS_ORIGIN` on the Render backend (step 1.4) so the browser is allowed to call the API cross-origin.
+5. Once deployed, note your frontend URL (e.g. `https://skill-path-sooty-chi.vercel.app`), and set it as `CORS_ORIGIN` on the Render backend (step 1.4) so the browser is allowed to call the API cross-origin.
 
 ### Notes
 
