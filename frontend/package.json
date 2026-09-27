@@ -4,7 +4,8 @@
   "description": "SkillPath UI - Guided Learning & Certification Planner",
   "private": true,
   "scripts": {
-    "dev": "npx serve . -p 3000",
-    "start": "npx serve . -p 3000"
+    "build": "node scripts/generate-firebase-config.js",
+    "dev": "npm run build && npx serve . -p 3000",
+    "start": "npm run build && npx serve . -p 3000"
   }
 }

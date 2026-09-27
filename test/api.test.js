@@ -1,3 +1,8 @@
+// Ensure tests run deterministically against the local catalog rules
+process.env.OPENAI_API_KEY = '';
+process.env.ANTHROPIC_API_KEY = '';
+process.env.GEMINI_API_KEY = '';
+
 const assert = require('assert');
 const app = require('../backend/server');
 const http = require('http');

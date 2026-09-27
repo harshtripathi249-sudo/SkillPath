@@ -218,15 +218,15 @@ Follow this once to turn on real accounts. It's entirely done through the Fireba
 
 1. **Create a Firebase project**: go to [console.firebase.google.com](https://console.firebase.google.com) → *Add project* → give it a name → Google Analytics is optional (safe to skip) → *Create project*.
 2. **Register a Web App**: in the new project, click the **`</>`** (Web) icon → give it a nickname (e.g. "SkillPath Web") → you don't need Firebase Hosting → *Register app*. Firebase shows you a `firebaseConfig` object.
-3. **Paste the config**: copy that object's values into [`frontend/js/firebase-config.js`](frontend/js/firebase-config.js), replacing every `YOUR_...` placeholder in `window.SKILLPATH_FIREBASE_CONFIG`.
+3. **Set the config via env vars**: copy [`frontend/.env.example`](frontend/.env.example) to `frontend/.env`, then fill in `FIREBASE_API_KEY`, `FIREBASE_AUTH_DOMAIN`, `FIREBASE_PROJECT_ID`, `FIREBASE_STORAGE_BUCKET`, `FIREBASE_MESSAGING_SENDER_ID`, `FIREBASE_APP_ID`, and `FIREBASE_MEASUREMENT_ID` from that `firebaseConfig` object. Running `npm run build` (or `npm run dev`/`npm start`, which run it automatically) inside `frontend/` generates `frontend/js/firebase-config.js` from these values via `frontend/scripts/generate-firebase-config.js`.
 4. **Enable sign-in providers**: *Build → Authentication → Get started → Sign-in method* tab → enable **Email/Password** → enable **Google** (pick a project support email when prompted) → *Save* for each.
 5. **Create the database**: *Build → Firestore Database → Create database* → choose **Start in production mode** → pick a location → *Enable*.
 6. **Apply security rules**: in Firestore Database → **Rules** tab, replace the contents with everything in [`firestore.rules`](firestore.rules) (repo root) → *Publish*.
 7. **Authorize your deployed domain** (only needed for Google Sign-In on a real domain - `localhost` is already authorized by default): *Authentication → Settings → Authorized domains → Add domain* → add your Vercel URL (e.g. `skillpath.vercel.app`) once you've deployed it.
 8. **Test it**: run the app locally (`npm start`), click **Sign In** in the header → try **Sign Up** with an email/password, or **Continue with Google** → confirm the 🔥 streak badge appears and generate a path, reload the page, and confirm it's still there.
-9. **Redeploy the frontend** to Vercel after editing `firebase-config.js` so the live site picks up your real config.
+9. **On Vercel**, set the same `FIREBASE_*` keys under Project Settings → Environment Variables instead of committing `frontend/.env` - the project's `frontend/vercel.json` already runs `npm run build` to regenerate `firebase-config.js` from them on every deploy.
 
-**Note on the config values**: the `apiKey` etc. in `firebase-config.js` are meant to be public and shipped in client code - Firebase's security model enforces access through Authentication + the Firestore Rules from step 6, not by keeping this file secret. Don't confuse it with the `ANTHROPIC_API_KEY` in `.env`, which *is* a real secret and must never appear in frontend code.
+**Note on the config values**: the `apiKey` etc. are meant to be public and shipped in client code - Firebase's security model enforces access through Authentication + the Firestore Rules from step 6, not by keeping these values secret. Routing them through env vars is about keeping project-specific values out of committed source and making it easy to swap projects per environment, not about hiding a real secret. Don't confuse it with the `ANTHROPIC_API_KEY` in the root `.env`, which *is* a real secret and must never appear in frontend code.
 
 **Optional future upgrade**: everything above is client-side only. If you later add an Express endpoint that needs to know *which* signed-in user is calling it (rather than just storing their data directly in Firestore from the browser), verify their Firebase ID token server-side with the `firebase-admin` SDK in an Express middleware - not implemented here, since nothing currently needs it.
 
@@ -316,13 +316,15 @@ The `backend/` and `frontend/` folders are independent - each can be deployed to
 ### 2. Deploy the frontend to Vercel
 
 1. Create a new Vercel project from the same repo.
-2. **Root Directory**: set to `frontend` (Vercel Project Settings → General → Root Directory). No framework preset needed - it's plain static HTML/CSS/JS.
-3. Before (or after) deploying, edit [`frontend/js/config.js`](frontend/js/config.js) and set:
+2. **Root Directory**: set to `frontend` (Vercel Project Settings → General → Root Directory). No framework preset needed - it's plain static HTML/CSS/JS. `frontend/vercel.json` already sets the build command to `npm run build`, which runs `frontend/scripts/generate-firebase-config.js` to generate `js/firebase-config.js` from the `FIREBASE_*` environment variables below.
+3. **Environment variables** (Vercel dashboard → Project Settings → Environment Variables) - see [`frontend/.env.example`](frontend/.env.example):
+   - `FIREBASE_API_KEY`, `FIREBASE_AUTH_DOMAIN`, `FIREBASE_PROJECT_ID`, `FIREBASE_STORAGE_BUCKET`, `FIREBASE_MESSAGING_SENDER_ID`, `FIREBASE_APP_ID`, `FIREBASE_MEASUREMENT_ID` - from your Firebase project's Web App config (see **Firebase Setup** above).
+4. Before (or after) deploying, edit [`frontend/js/config.js`](frontend/js/config.js) and set:
    ```js
    window.SKILLPATH_API_BASE_URL = 'https://skillpath-backend.onrender.com';
    ```
    using your actual Render URL from step 1, then commit and redeploy.
-4. Once deployed, note your frontend URL, e.g. `https://skillpath.vercel.app`, and set it as `CORS_ORIGIN` on the Render backend (step 1.4) so the browser is allowed to call the API cross-origin.
+5. Once deployed, note your frontend URL, e.g. `https://skillpath.vercel.app`, and set it as `CORS_ORIGIN` on the Render backend (step 1.4) so the browser is allowed to call the API cross-origin.
 
 ### Notes
 
