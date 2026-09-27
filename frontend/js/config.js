@@ -12,7 +12,7 @@
  * redeploy the backend to a different Render URL.
  */
 (function () {
-  const RENDER_BACKEND_URL = 'https://skillpath-gi3k.onrender.com';
+  const RENDER_BACKEND_URL = 'https://skillpath-backend-pa4q.onrender.com';
   const isLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname);
   window.SKILLPATH_API_BASE_URL = isLocal ? '' : RENDER_BACKEND_URL;
 })();
